@@ -11,45 +11,45 @@ export class ProductosComponent {
   productos: Product[] = [
     {
       id: 1,
-      name: 'Producto 1',
-      price: 100,
-      description: 'Descripción del producto 1',
-      image: 'https://via.placeholder.com/150'
+      name: 'Azúcar Incauca light vitamina D3, bolsa 750g',
+      price: 7000,
+      description: 'Azúcar light con la mitad de calorías con Stevia y fortificado con Vitamina D3, que ayuda a fijar el calcio en los huesos.',
+      image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/185648-1600-1600?v=637813979704500000&width=1600&height=1600&aspect=true'
     },
     {
       id: 2,
-      name: 'Producto 2',
-      price: 200,
-      description: 'Descripción del producto 2',
-      image: 'https://via.placeholder.com/150'
+      name: 'Sal Refisal bolsa 3000kg',
+      price: 5000,
+      description: 'Sal Refisal es la sal que no puede faltar en la cocina y en la mesa.',
+      image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/192055-800-800?v=637814017441900000&width=800&height=800&aspect=true'
     },
     {
       id: 3,
-      name: 'Producto 3',
-      price: 300,
-      description: 'Descripción del producto 3',
-      image: 'https://via.placeholder.com/150'
+      name: 'Mantequilla Colanta sin sal x125g',
+      price: 5000,
+      description: 'Una mantequilla suave y deliciosa para esparcir sobre tus comidas preferidas o para ser parte de preparaciones como tortas, galletas y más.',
+      image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/192971-800-800?v=637814023150330000&width=800&height=800&aspect=true'
     },
     {
       id: 4,
-      name: 'Producto 4',
-      price: 100,
-      description: 'Descripción del producto 1',
-      image: 'https://via.placeholder.com/150'
+      name: 'Arroz Diana blanco x1kg',
+      price: 4590,
+      description: 'Proporciónale todo el amor a tu familia con el delicioso Arroz Diana.',
+      image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/186299-1600-1600?v=637813981775570000&width=1600&height=1600&aspect=true'
     },
     {
       id: 5,
-      name: 'Producto 5',
-      price: 200,
-      description: 'Descripción del producto 2',
-      image: 'https://via.placeholder.com/150'
+      name: 'Crema Dental Colgate Triple Acción x3und x75ml c/u',
+      price: 19790,
+      description: 'Triple beneficio, protección, blancura y frescura.',
+      image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/360135-800-800?v=637858855860470000&width=800&height=800&aspect=true'
     },
     {
       id: 6,
-      name: 'Producto 6',
-      price: 300,
-      description: 'Descripción del producto 3',
-      image: 'https://via.placeholder.com/150'
+      name: 'Pasta Clásica Spaghetti Doria x 250 g',
+      price: 2000,
+      description: 'El Spaghetti es una pasta larga con múltiples y fáciles formas de preparación; perfecta para acompañar con salsas, carnes y verduras.',
+      image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/186130-800-800?v=637813981192900000&width=800&height=800&aspect=true'
     },
 
   ];

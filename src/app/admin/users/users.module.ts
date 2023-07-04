@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
+import { MaterialModule } from 'src/app/material/material.module';
+
+
 
 
 
@@ -9,7 +12,8 @@ import { UsersComponent } from './users.component';
     UsersComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ]
 })
 export class UsersModule { }

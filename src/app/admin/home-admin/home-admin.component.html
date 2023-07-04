@@ -13,32 +13,27 @@
     </mat-toolbar>
 
     <mat-nav-list>
-      <a routerLink="#"
+      <a routerLink="./user"
         mat-list-item
         (click)="sidenav.toggle()">
         <mat-icon mat-list-icon>sort</mat-icon>
         <span> Listado de Usuario</span>
       </a>
-      <a routerLink="#"
+      <a routerLink="./new"
         mat-list-item
         (click)="sidenav.toggle()">
         <mat-icon mat-list-icon>add_task</mat-icon>
         <span> Añadir Usuario</span>
       </a>
-      <a routerLink="#"
-        mat-list-item
-        (click)="sidenav.toggle()">
-        <mat-icon mat-list-icon>search</mat-icon>
-        <span> Búscar Usuario</span>
-      </a>
-      <a routerLink="#"
+     <a routerLink="#"
         mat-list-item
         (click)="sidenav.toggle()">
         <mat-icon mat-list-icon>delete_forever</mat-icon>
         <span> Eliminar Usuario</span>
       </a>
       <hr size="1px" color="black">
-      <a [routerLink]="'./store/producto'"
+
+      <a routerLink="./product"
         mat-list-item
         (click)="sidenav.toggle()">
         <mat-icon mat-list-icon>playlist_add_check</mat-icon>
@@ -85,7 +80,7 @@
   </mat-toolbar>
 
   <div class="container">
-
+    <router-outlet></router-outlet>
   </div>
 
 </mat-sidenav-container>

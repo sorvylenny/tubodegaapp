@@ -4,18 +4,29 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { UsersModule } from './users/users.module';
+import { StoreModule } from '../store/store.module';
+import { AuthModule } from '../auth/auth.module';
+import { NewUsersComponent } from './pages/new-users/new-users.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductComponent } from './pages/product/product.component';
 
 
 
 @NgModule({
   declarations: [
-    HomeAdminComponent
+    HomeAdminComponent,
+    NewUsersComponent,
+    ProductComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
-    UsersModule
+    UsersModule,
+    StoreModule,
+    AuthModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

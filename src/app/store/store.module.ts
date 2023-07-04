@@ -31,6 +31,9 @@ import { CartComponent } from './pages/cart/cart.component';
     MaterialModule,
     IvyCarouselModule,
     StoreRoutingModule
+  ],
+  exports:[
+    ProductosComponent,
   ]
 })
 export class StoreModule { }
