@@ -1,0 +1,25 @@
+
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.footer-dad{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.shop{
+  text-align: center;
+}
+
+.link-footer{
+  color: white;
+}

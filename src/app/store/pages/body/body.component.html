@@ -1,0 +1,40 @@
+
+<div>
+  <div>
+    <app-buscar></app-buscar>
+  </div>
+  <mat-card mat-elevation="5" class="jumbotron">
+    <carousel
+    timings="250ms ease-in"
+    [autoplay]="true"
+    interval="2000"
+    color="accent"
+    maxWidth="auto"
+    proportion="25"
+    slides="4"
+    [loop]="true"
+    orientation="ltr">
+    <ng-container *ngFor="let carrucels of images">
+      <ng-container>
+        <img src="{{ carrucels.path }}">
+      </ng-container>
+    </ng-container>
+  </carousel>
+  </mat-card>
+</div>
+
+<div>
+  <app-productos></app-productos>
+</div>
+
+
+	<!-- overflowCellsLimit -->
+  <div class="demo">
+    <h1>Catalago de Marcas</h1>
+    <carousel
+      [images]="images"
+      [overflowCellsLimit]="2"
+      [loop]="true">
+    </carousel>
+  </div>
+

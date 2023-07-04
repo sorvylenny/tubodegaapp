@@ -1,0 +1,16 @@
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.header{
+  background-color: rgb(164, 50, 231);
+  color: antiquewhite;
+}
+
+a{
+  color:white
+}
+
+
+

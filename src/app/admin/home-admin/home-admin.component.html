@@ -1,0 +1,91 @@
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #sidenav mode="push">
+
+    <mat-toolbar color="primary">
+      <span>Menú</span>
+      <span class="spacer"></span>
+
+      <button mat-icon-button
+        (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a routerLink="#"
+        mat-list-item
+        (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>sort</mat-icon>
+        <span> Listado de Usuario</span>
+      </a>
+      <a routerLink="#"
+        mat-list-item
+        (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>add_task</mat-icon>
+        <span> Añadir Usuario</span>
+      </a>
+      <a routerLink="#"
+        mat-list-item
+        (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>search</mat-icon>
+        <span> Búscar Usuario</span>
+      </a>
+      <a routerLink="#"
+        mat-list-item
+        (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>delete_forever</mat-icon>
+        <span> Eliminar Usuario</span>
+      </a>
+      <hr size="1px" color="black">
+      <a [routerLink]="'./store/producto'"
+        mat-list-item
+        (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>playlist_add_check</mat-icon>
+        <span> Listado de Productos</span>
+      </a>
+      <a routerLink="#"
+        mat-list-item
+        (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>search</mat-icon>
+        <span> Búscar Producto</span>
+      </a>
+      <a routerLink="#"
+        mat-list-item
+        (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>add_shopping_cart</mat-icon>
+        <span> Añadir Producto</span>
+      </a>
+      <a routerLink="#"
+        mat-list-item
+        (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>delete</mat-icon>
+        <span> Eliminar Producto</span>
+      </a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button
+      (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+
+    <span>Admin</span>
+    <div class="boton">
+    <button mat-icon-button d-flex
+      (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </div>
+  </mat-toolbar>
+
+  <div class="container">
+
+  </div>
+
+</mat-sidenav-container>
