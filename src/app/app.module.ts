@@ -23,8 +23,8 @@ import { AdminModule } from './admin/admin.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AdminModule,
     StoreModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

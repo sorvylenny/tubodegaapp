@@ -1,14 +1,10 @@
 
 mat-card {
   margin: 10px;
-  width: 350px;
+  max-width: 400px;
+  height: 400px;
 }
 
-img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-}
 
 h3 {
   margin-top: 10px;
@@ -18,17 +14,32 @@ h3 {
   font-weight: 600;
 }
 
-p {
+button {
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
+ }
+
+.price{
+  font-weight: 700;
   font-size: 14px;
   line-height: 1.2;
   margin-bottom: 15px;
 }
 
-button {
-  margin-top: 5px;
-  color: #fff;
+.imagen{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 120px;
+  height: 120px;
 }
 
-.price{
-font-weight: 700;
+.descripcion{
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 15px;
+  text-align: justify;
 }
+
+

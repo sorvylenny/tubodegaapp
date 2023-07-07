@@ -1,9 +1,21 @@
 
 <div>
+  <!--Buscar-->
   <div>
     <app-buscar></app-buscar>
   </div>
-  <mat-card mat-elevation="5" class="jumbotron">
+  <!--Jumbotron-->
+
+
+<!--Productos-->
+<div>
+  <app-productos></app-productos>
+</div>
+
+
+	<!-- overflowCellsLimit -->
+
+ <mat-card mat-elevation="5" class="jumbotron">
     <carousel
     timings="250ms ease-in"
     [autoplay]="true"
@@ -22,19 +34,3 @@
   </carousel>
   </mat-card>
 </div>
-
-<div>
-  <app-productos></app-productos>
-</div>
-
-
-	<!-- overflowCellsLimit -->
-  <div class="demo">
-    <h1>Catalago de Marcas</h1>
-    <carousel
-      [images]="images"
-      [overflowCellsLimit]="2"
-      [loop]="true">
-    </carousel>
-  </div>
-

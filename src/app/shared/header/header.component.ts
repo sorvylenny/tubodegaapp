@@ -12,6 +12,7 @@ export class HeaderComponent {
   constructor(private router: Router) {}
 
   goToCart(){
-    this.router.navigate(['./cart']);
+    this.router.navigate(['./cars']);
   }
+
 }
