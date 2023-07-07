@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +11,10 @@ export class HeaderComponent {
   constructor(private router: Router) {}
 
   goToCart(){
-    this.router.navigate(['./cars']);
+    this.router.navigate(['./cart']);
+  }
+  goToAuth(){
+    this.router.navigate(['auth/login']);
   }
 
 }

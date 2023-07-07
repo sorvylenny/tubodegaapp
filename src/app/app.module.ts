@@ -7,23 +7,23 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaymentComponent } from './shared/payment/payment.component';
 
-import { AuthModule } from './auth/auth.module';
-import { StoreModule } from './store/store.module';
-import { AdminModule } from './admin/admin.module';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    PaymentComponent,
+      
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    StoreModule
+    HttpClientModule
 
   ],
   providers: [],

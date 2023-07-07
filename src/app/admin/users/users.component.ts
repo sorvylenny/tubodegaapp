@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 
 
@@ -11,14 +12,14 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
   rol: string;
   password?: string;
 } */
-export interface PeriodicElement {
+export interface User {
   name: string;
   id: number;
   correo: string;
   rol: string;
 }
 
-const Data: PeriodicElement[] = [
+const Data: User[] = [
   {id: 1, name: 'Hydrogen', correo: 'test1@prueba.com', rol: 'admin'},
   {id: 2, name: 'Helium',   correo: 'test1@prueba.com', rol: 'user'},
   {id: 3, name: 'Lithium',  correo: 'test1@prueba.com', rol: 'admin'},
@@ -41,9 +42,15 @@ export class UsersComponent {
   displayedColumns: string[] = ['id', 'name', 'correo', 'rol', 'ver'];
   dataSource = new MatTableDataSource(Data);
 
+  constructor(private router: Router) {}
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  detailsId(){
+    this.router.navigate(['detailsUser/:id']);
   }
 
 }

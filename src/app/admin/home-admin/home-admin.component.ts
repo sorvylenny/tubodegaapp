@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ChatDialogComponent } from '../components/chat-dialog/chat-dialog.component';
+
 import { MatDialog } from '@angular/material/dialog';
+import { ChatDialogComponent } from 'src/app/shared/chat-dialog/chat-dialog.component';
 @Component({
   selector: 'app-home-admin',
   templateUrl: './home-admin.component.html',

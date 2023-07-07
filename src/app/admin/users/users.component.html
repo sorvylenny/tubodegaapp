@@ -35,7 +35,10 @@
     <th mat-header-cell *matHeaderCellDef> Ver más </th>
     <td mat-cell *matCellDef="let element" style="text-align: center;">
       <a href="" style="color: rgb(21, 20, 20);" matTooltip = "Ver mas información">
+        <button mat-button 
+        (click)="detailsId()">
         <mat-icon>search</mat-icon>
+      </button>
       </a>
      </td>
   </ng-container>

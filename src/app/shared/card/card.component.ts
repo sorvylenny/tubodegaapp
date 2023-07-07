@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Product } from '../../interfaces/store.interface';
+import { Component, Inject, InjectionToken, Input } from '@angular/core';
+import { Product } from '../../store/interfaces/store.interface';
+
 
 @Component({
   selector: 'app-card',
@@ -7,6 +8,7 @@ import { Product } from '../../interfaces/store.interface';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
+  
   @Input() products!: Product[];
 
   cartItems: Product[] = [];

@@ -37,7 +37,7 @@ export class RegisterPageComponent {
    }
 
    regresar(){
-    this.router.navigate(['']);
+    this.router.navigate(['./store']);
    }
 
 }

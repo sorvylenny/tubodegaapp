@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/store/interfaces/store.interface';
 
 const productos: Product[] = [
@@ -60,9 +61,16 @@ export class ProductComponent {
   displayedColumns: string[] = ['id', 'name', 'price', 'descripcion', 'imagen', 'ver'];
   dataSource = new MatTableDataSource(productos);
 
+  constructor(private router: Router) {}
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  detailsId(){
+    this.router.navigate(['detailsProduct/:id']);
+  }
+
 }

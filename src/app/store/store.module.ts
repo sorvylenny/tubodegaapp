@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
 import { BuscarComponent } from './pages/buscar/buscar.component';
 import { BodyComponent } from './pages/body/body.component';
-import { CardComponent } from './components/card/card.component';
+import { CardComponent } from '../shared/card/card.component';
 import { StoreRoutingModule } from './store-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from '../shared/header/header.component';
@@ -13,7 +13,7 @@ import { FooterComponent } from '../shared/footer/footer.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 
 import { FormsModule } from '@angular/forms';
-import { CarsComponent } from './pages/cars/cars.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 
 
@@ -26,7 +26,8 @@ import { CarsComponent } from './pages/cars/cars.component';
     ProductosComponent,
     CardComponent,
     BuscarComponent,
-    CarsComponent,
+    CartComponent,
+    
     ],
   imports: [
     CommonModule,

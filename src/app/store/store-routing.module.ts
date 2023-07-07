@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { BuscarComponent } from './pages/buscar/buscar.component';
 import { ProductComponent } from '../admin/pages/product/product.component';
-import { CarsComponent } from './pages/cars/cars.component';
+import { CartComponent } from './pages/cart/cart.component';
+
 
 const routes: Routes = [
   {
@@ -15,17 +16,14 @@ const routes: Routes = [
         component: BuscarComponent,
       },
       {
-        path: 'cars',
-        component: CarsComponent,
+        path: 'cart',
+        component: CartComponent,
       },
       {
         path: 'productos',
         component: ProductComponent,
       },
-      {
-        path: '**',
-        redirectTo: '',
-      },
+      
     ],
   },
 ];
@@ -35,3 +33,5 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class StoreRoutingModule {}
+
+
