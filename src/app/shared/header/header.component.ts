@@ -11,7 +11,7 @@ export class HeaderComponent {
   constructor(private router: Router) {}
 
   goToCart(){
-    this.router.navigate(['./cart']);
+    this.router.navigate(['store/cart']);
   }
   goToAuth(){
     this.router.navigate(['auth/login']);
