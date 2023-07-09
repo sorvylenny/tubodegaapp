@@ -1,0 +1,26 @@
+
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  img{
+    width: 50%;
+    height: 50%;
+    display: block;
+    margin: 10px auto;
+  }
+  
+  th{
+    text-align: center;
+  }
+  
+  td{
+    text-align: justify;
+  }
+  

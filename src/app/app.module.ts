@@ -7,7 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PaymentComponent } from './shared/payment/payment.component';
+import { SharedModule } from './shared/shared.module';
+
 
 
 
@@ -16,14 +17,15 @@ import { PaymentComponent } from './shared/payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PaymentComponent,
+
       
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
 
   ],
   providers: [],

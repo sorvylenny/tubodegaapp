@@ -1,36 +1,10 @@
-import { Component } from '@angular/core';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-
-
-
-/* export interface Users{
-  id: number;
-  name: string;
-  last?: string;
-  correo: string;
-  rol: string;
-  password?: string;
-} */
-export interface User {
-  name: string;
-  id: number;
-  correo: string;
-  rol: string;
-}
-
-const Data: User[] = [
-  {id: 1, name: 'Hydrogen', correo: 'test1@prueba.com', rol: 'admin'},
-  {id: 2, name: 'Helium',   correo: 'test1@prueba.com', rol: 'user'},
-  {id: 3, name: 'Lithium',  correo: 'test1@prueba.com', rol: 'admin'},
-  {id: 4, name: 'Beryllium',correo: 'test1@prueba.com', rol: 'user'},
-  {id: 5, name: 'Boron',    correo: 'test1@prueba.com', rol: 'user'},
-  {id: 6, name: 'Carbon',   correo: 'test1@prueba.com', rol: 'user'},
-  {id: 7, name: 'Nitrogen', correo: 'test1@prueba.com', rol: 'user'},
-  {id: 8, name: 'Oxygen',   correo: 'test1@prueba.com', rol: 'user'},
-  {id: 9, name: 'Fluorine', correo: 'test1@prueba.com', rol: 'user'},
-  {id: 10, name: 'Neon',    correo: 'test1@prueba.com', rol: 'user'},
-];
+import { UsersService } from '../services/users.service';
+import { MatSort } from '@angular/material/sort';
+import { TableColumns } from 'src/app/shared/interface/table-columns';
+import { User } from '../interface/user';
 
 
 @Component({
@@ -38,19 +12,38 @@ const Data: User[] = [
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'correo', 'rol', 'ver'];
-  dataSource = new MatTableDataSource(Data);
+  dataSource:  any = [];
+  @ViewChild(MatSort, {static: true}) sort!: MatSort;
+  tableColumns: TableColumns[]=[];
+  user : User []=[]
 
-  constructor(private router: Router) {}
+  
+
+  constructor(private router: Router, private userService: UsersService) {}
+  ngOnInit(): void {
+   this.dataSource = new MatTableDataSource(this.userService.Data);
+   this.dataSource.sort = this.sort;
+  }
+
+  setTableColumns(){
+    this.tableColumns = [
+      {HeaderCellDef: 'name', ColumnDef: 'name', dataKey: 'name' },
+      {HeaderCellDef: 'id', ColumnDef: 'id', dataKey: 'id' },
+      {HeaderCellDef: 'correo', ColumnDef: 'correo', dataKey: 'correo' },
+      {HeaderCellDef: 'rol', ColumnDef: 'rol', dataKey: 'rol' },
+      {HeaderCellDef: 'ver mas', ColumnDef: 'ver', dataKey: 'ver' },
+    ]
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  detailsId(){
-    this.router.navigate(['detailsUser/:id']);
+  detailsId( id: number){
+    this.router.navigate(['admin/detailsUser', id]);
   }
 
 }

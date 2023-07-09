@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
@@ -11,26 +12,19 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 
 export class LoginPageComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
-    email:  new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
+    email:  new FormControl('test1@prueba.com', [Validators.required, Validators.email]),
+    password: new FormControl('1234567', [Validators.required, Validators.minLength(7)]),
     remember: new FormControl(false),
    })
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private router: Router){}
 
-  ngOnInit() {
-     this.loginForm.valueChanges.subscribe(
-      _=> {
-        console.log(this.loginForm.controls['email']?.errors)
-        console.log(this.loginForm.controls['email']?.errors?.['email']);
-      }
-     )
+  ngOnInit() {}
+
+
+  submit() {
+    this.router.navigate(['admin']);
   }
-
-
-
-
-  submit() {}
   }
 
 

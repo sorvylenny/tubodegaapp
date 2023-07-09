@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/store/interfaces/store.interface';
+import { TableColumns } from 'src/app/shared/interface/table-columns';
 
 const productos: Product[] = [
   {
@@ -56,12 +57,19 @@ const productos: Product[] = [
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent {
- /*  @Input() products!: Product[]; */
+export class ProductComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'price', 'descripcion', 'imagen', 'ver'];
-  dataSource = new MatTableDataSource(productos);
+  dataSource = new MatTableDataSource(productos); 
+  /* tableColumns: TableColumns[] = [];
+  productList = productos; */
 
   constructor(private router: Router) {}
+  
+  ngOnInit(): void {
+  /*   this.setTableColumns(); */
+  }
+
+
 
 
   applyFilter(event: Event) {
@@ -69,8 +77,19 @@ export class ProductComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  detailsId(){
-    this.router.navigate(['detailsProduct/:id']);
+  detailsId( id: number){
+    this.router.navigate(['admin/detailsProduct', id]);
   }
+/* 
+  setTableColumns() {
+    this.tableColumns = [
+      { ColumnDef: 'id', HeaderCellDef: 'Id', dataKey: 'id' },
+      { ColumnDef: 'name', HeaderCellDef: 'Name', dataKey: 'name' },
+      { ColumnDef: 'price', HeaderCellDef: 'Price',dataKey: 'price' },
+      { ColumnDef: 'description', HeaderCellDef: 'Description', dataKey: 'description' },
+      { ColumnDef: 'image', HeaderCellDef: 'Image', dataKey: 'image', altText : 'Imagen del producto' },
+      { ColumnDef: 'ver mas', HeaderCellDef: 'Ver más', dataKey: 'ver mas', altText: '' },
 
+    ];
+  } */
 }
