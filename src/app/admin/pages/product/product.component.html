@@ -56,9 +56,9 @@
   </tr>
 </table> -->
 
-<h2>new table</h2>
+<h2>Productos</h2>
 <section>
   <app-filter [dataSource]="dataSource" (filterChanged)="handleFilterChanged($event)"></app-filter>
-  <app-table [data] ="productList" [columns] ="tableColumns" (detailClicked)="mostrarDetalle($event)" [showButton]="showButton"></app-table>
+  <app-table [data] ="productList" [columns] ="tableColumns" (detailClicked)="mostrarDetalle($event)" [showButton]="true"  (ngOnInit)="getTablaData()"></app-table>
 </section>
 

@@ -13,6 +13,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSliderModule} from '@angular/material/slider';
@@ -51,6 +52,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatListModule,
     MatMenuModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
     MatSelectModule,
     MatSidenavModule,
     MatSliderModule,

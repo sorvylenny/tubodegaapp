@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges, Pipe } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/store/interfaces/store.interface';
 import { TableColumns } from 'src/app/shared/interface/table-columns';
+import { CurrencyFormatPipe } from 'src/app/shared/pipe/currency.pipe';
 
 const productos: Product[] = [
   {
@@ -70,11 +71,12 @@ export class ProductComponent implements OnInit {
   products: any;
   filteredDataSource: any;
   showButton: boolean = true;
+  paginator: any;
 
 
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router ) {}
   
   ngOnInit(): void {
     this.Product = productos;
@@ -95,6 +97,30 @@ export class ProductComponent implements OnInit {
     }
   }
 
+  getTablaData() {
+    // Aquí obtienes los datos para la tabla
+    this.dataSource = new MatTableDataSource(this.products);
+    setTimeout(() => {
+      this.dataSource.paginator = this.paginator;
+    }, 0);
+  }
+  
+  mostrarDetalle( id: number){
+    this.router.navigate(['admin/detailsProduct', id]);
+  }
+  
+  setTableColumns() {
+    this.tableColumns = [
+      { ColumnDef: 'id', HeaderCellDef: 'Id', dataKey: 'id' },
+      { ColumnDef: 'name', HeaderCellDef: 'Name', dataKey: 'name' },
+      { ColumnDef: 'price', HeaderCellDef: 'Price',dataKey: 'price',  pipe: new CurrencyFormatPipe('es-CO') },
+      { ColumnDef: 'description', HeaderCellDef: 'Description', dataKey: 'description' },
+      { ColumnDef: 'image', HeaderCellDef: 'Image', dataKey: 'image', altText : '' },
+      { ColumnDef: 'verMas', HeaderCellDef: 'Ver más', dataKey: 'verMas', button: true },
+      
+    ];
+  }
+}
 
 /*   handleFilterChanged(filterValue: string) {
     this.filterValue = filterValue;
@@ -108,20 +134,3 @@ export class ProductComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     }
   } */
-
-  mostrarDetalle( id: number){
-    this.router.navigate(['admin/detailsProduct', id]);
-  }
-
-  setTableColumns() {
-    this.tableColumns = [
-      { ColumnDef: 'id', HeaderCellDef: 'Id', dataKey: 'id' },
-      { ColumnDef: 'name', HeaderCellDef: 'Name', dataKey: 'name' },
-      { ColumnDef: 'price', HeaderCellDef: 'Price',dataKey: 'price' },
-      { ColumnDef: 'description', HeaderCellDef: 'Description', dataKey: 'description' },
-      { ColumnDef: 'image', HeaderCellDef: 'Image', dataKey: 'image', altText : '' },
-      { ColumnDef: 'verMas', HeaderCellDef: 'Ver más', dataKey: 'verMas', button: true },
-
-    ];
-  }
-}

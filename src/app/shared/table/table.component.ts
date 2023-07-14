@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TableColumns } from '../interface/table-columns';
-
-
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -16,7 +16,8 @@ export class TableComponent implements OnInit {
   tableColumns: TableColumns [] = [];
   @Output() detailClicked = new EventEmitter<any>();
   @Input() showButton!: boolean;
-  
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+ 
   
   @Input() set data(data: any) {
     this.dataSource = data;
@@ -34,11 +35,17 @@ export class TableComponent implements OnInit {
   mostrarDetalle(producto: any) {
     this.detailClicked.emit(producto);
   }
-
    detailsId( id: number){
     this.router.navigate(['admin/detailsUser', id]);
   }
  
+  getTablaData() {
+    // Aquí obtienes los datos para la tabla
+    this.dataSource = new MatTableDataSource(this.data);
+    setTimeout(() => {
+      this.dataSource.paginator = this.paginator;
+    }, 0);
+  }
  /*  handleFilterChanged(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase(); 
   } */

@@ -26,8 +26,6 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
-    UsersModule,
-    StoreModule,
     AuthModule,
     FormsModule,
     ReactiveFormsModule,

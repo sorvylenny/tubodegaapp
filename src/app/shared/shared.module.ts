@@ -10,6 +10,7 @@ import { MaterialModule } from '../material/material.module';
 import { TableComponent } from './table/table.component';
 import { ColumnsPipe } from './pipe/columns.pipe';
 import { FilterComponent } from './filter/filter.component';
+import { CurrencyPipe } from './pipe/currency.pipe';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FilterComponent } from './filter/filter.component';
     PaymentComponent,
     TableComponent,
     ColumnsPipe,
-    FilterComponent
+    FilterComponent,
+   
   ],
   imports: [
     CommonModule,
