@@ -1,0 +1,10 @@
+
+
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput  [(ngModel)]="filterValue"  (input)="handleFilterChanged(filterValue)">
+  </mat-form-field>
+  
+<!--   <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" [attr.colspan]="tableColumns.length"> No data matching the filter "{{input.value}}"</td>
+  </tr> -->

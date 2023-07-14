@@ -3,4 +3,5 @@ export interface TableColumns {
     HeaderCellDef: string;
     dataKey: string;
     altText ?: string;
+    button?: boolean;
 }

@@ -1,7 +1,7 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { TableColumns } from '../interface/table-columns';
-import { MatSort } from '@angular/material/sort';
+
 
 
 
@@ -13,9 +13,10 @@ import { MatSort } from '@angular/material/sort';
 export class TableComponent implements OnInit {
   displayedColumns: string[] = [];
   dataSource : any = [];
-  tableColumns: TableColumns [] = []
-  @ViewChild(MatSort, {static: true}) sort!: MatSort;
-
+  tableColumns: TableColumns [] = [];
+  @Output() detailClicked = new EventEmitter<any>();
+  @Input() showButton!: boolean;
+  
   
   @Input() set data(data: any) {
     this.dataSource = data;
@@ -30,14 +31,20 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  mostrarDetalle(producto: any) {
+    this.detailClicked.emit(producto);
   }
 
-  detailsId( id: number){
+   detailsId( id: number){
     this.router.navigate(['admin/detailsUser', id]);
   }
  
+ /*  handleFilterChanged(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase(); 
+  } */
+
+  handleFilterChanged(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

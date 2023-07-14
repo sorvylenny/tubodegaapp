@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/store/interfaces/store.interface';
@@ -11,6 +11,7 @@ const productos: Product[] = [
     price: 7000,
     description: 'Azúcar light con la mitad de calorías con Stevia y fortificado con Vitamina D3, que ayuda a fijar el calcio en los huesos.',
     image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/185648-1600-1600?v=637813979704500000&width=1600&height=1600&aspect=true'
+
   },
   {
     id: 2,
@@ -58,38 +59,69 @@ const productos: Product[] = [
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'price', 'descripcion', 'imagen', 'ver'];
-  dataSource = new MatTableDataSource(productos); 
-  /* tableColumns: TableColumns[] = [];
-  productList = productos; */
+
+  tableColumns: TableColumns[] = [];
+  productList = productos;
+  @Input() dataSource!: any;
+  @Input() filterValue : string = ''; 
+  Product: Product [] = [];
+  filteredProducts = this.Product;
+  displayedColumns: string[] = this.tableColumns.map(column => column.ColumnDef) 
+  products: any;
+  filteredDataSource: any;
+  showButton: boolean = true;
+
+
+
 
   constructor(private router: Router) {}
   
   ngOnInit(): void {
-  /*   this.setTableColumns(); */
+    this.Product = productos;
+    this.setTableColumns();
+    this.handleFilterChanged('');
+    
+  }
+
+  handleFilterChanged(filterValue: string) {
+    this.filterValue = filterValue;
+    if (this.Product) {
+      this.filteredProducts = this.Product.filter((item: any) => {
+        // Replace 'name' with the property you want to filter on
+        return item.name.toLowerCase().includes(this.filterValue.toLowerCase());
+      });
+      console.log(this.filteredProducts);
+      this.productList = this.filteredProducts;
+    }
   }
 
 
+/*   handleFilterChanged(filterValue: string) {
+    this.filterValue = filterValue;
+    if (this.Product) {
+      this.filteredProducts = this.Product.filter((item: any) => {
+        // Replace 'name' with the property you want to filter on
+        return item.name.toLowerCase().includes(this.filterValue.toLowerCase());
+      });
+      console.log(this.filteredProducts);
+      this.dataSource = new MatTableDataSource(this.filteredProducts);
+      this.dataSource.paginator = this.paginator;
+    }
+  } */
 
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  detailsId( id: number){
+  mostrarDetalle( id: number){
     this.router.navigate(['admin/detailsProduct', id]);
   }
-/* 
+
   setTableColumns() {
     this.tableColumns = [
       { ColumnDef: 'id', HeaderCellDef: 'Id', dataKey: 'id' },
       { ColumnDef: 'name', HeaderCellDef: 'Name', dataKey: 'name' },
       { ColumnDef: 'price', HeaderCellDef: 'Price',dataKey: 'price' },
       { ColumnDef: 'description', HeaderCellDef: 'Description', dataKey: 'description' },
-      { ColumnDef: 'image', HeaderCellDef: 'Image', dataKey: 'image', altText : 'Imagen del producto' },
-      { ColumnDef: 'ver mas', HeaderCellDef: 'Ver más', dataKey: 'ver mas', altText: '' },
+      { ColumnDef: 'image', HeaderCellDef: 'Image', dataKey: 'image', altText : '' },
+      { ColumnDef: 'verMas', HeaderCellDef: 'Ver más', dataKey: 'verMas', button: true },
 
     ];
-  } */
+  }
 }

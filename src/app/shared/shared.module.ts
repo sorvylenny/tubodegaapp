@@ -5,9 +5,11 @@ import { ChatDialogComponent } from './chat-dialog/chat-dialog.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { PaymentComponent } from './payment/payment.component';
+import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { TableComponent } from './table/table.component';
 import { ColumnsPipe } from './pipe/columns.pipe';
+import { FilterComponent } from './filter/filter.component';
 
 
 @NgModule({
@@ -18,11 +20,13 @@ import { ColumnsPipe } from './pipe/columns.pipe';
     HeaderComponent,
     PaymentComponent,
     TableComponent,
-    ColumnsPipe
+    ColumnsPipe,
+    FilterComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ], 
   exports:[
     CardComponent,
@@ -30,7 +34,10 @@ import { ColumnsPipe } from './pipe/columns.pipe';
     FooterComponent,
     HeaderComponent,
     PaymentComponent,
-    TableComponent
+    TableComponent, 
+    FilterComponent
+
+   
 
   ]
 })
