@@ -1,21 +1,18 @@
 
-
-<!-- <mat-grid-list cols="3" rowHeight="400px">
-  <mat-grid-tile> -->
-<mat-card class="card-container">
-  <mat-card-header>
-    <mat-card-title class="title">{{ title }}</mat-card-title>
-    <mat-card-subtitle class="price">{{ subtitle }}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image [src]="imageUrl" alt="{{ imageAlt }}" class="imagen">
-  <mat-card-content class="descripcion">
-    {{ content }}
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-flat-button color="primary" class="button"
-      (click)="buttonAction.emit()">
-      <mat-icon>shopping_cart_checkout</mat-icon> {{ buttonText }} </button>
-  </mat-card-actions>
-</mat-card>
-<!--   </mat-grid-tile>
-</mat-grid-list> -->
+<div class="card-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="title">{{ title }}</mat-card-title>
+      <mat-card-subtitle class="price">{{ subtitle | currency }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="imageUrl" alt="{{ imageAlt }}" class="imagen">
+    <mat-card-content class="descripcion">
+      {{ content }}
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" class="button"
+        (click)="buttonAction.emit()">
+        <mat-icon>shopping_cart_checkout</mat-icon> {{ buttonText }} </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
