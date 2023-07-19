@@ -1,6 +1,15 @@
 
 <h1>Productos</h1>
 <mat-divider></mat-divider>
-<div>
-  <app-card [products]="productos"></app-card>
+<div class="custom-grid-container">
+  <app-card *ngFor="let product of productos"
+  [title]="product.name.toString()"
+  [subtitle]="product.price.toString()"
+  [imageUrl]="product.image"
+  imageAlt="Imagen del producto"
+  [content]="product.description"
+  [buttonText]="'Agregar al carrito'" 
+  (buttonAction)="addToCart(product)"
+  >
+</app-card>
 </div>
