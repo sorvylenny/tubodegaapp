@@ -1,8 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TableColumns } from '../interface/table-columns';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { Product } from 'src/app/store/interfaces/store.interface';
+
 
 
 @Component({
@@ -10,13 +13,17 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterViewInit  {
   displayedColumns: string[] = [];
   dataSource : any = [];
   tableColumns: TableColumns [] = [];
-  @Output() detailClicked = new EventEmitter<any>();
   @Input() showButton!: boolean;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  clickedRows: any[] = [];
+  @Output() detailsId = new EventEmitter<Product>();
+  selectedData: any;
+  selectedProduct: any;
  
   
   @Input() set data(data: any) {
@@ -32,11 +39,10 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  mostrarDetalle(producto: any) {
-    this.detailClicked.emit(producto);
-  }
-   detailsId( id: number){
-    this.router.navigate(['admin/detailsUser', id]);
+  ngAfterViewInit() {
+    if (this.dataSource) {
+      this.dataSource.sort = this.sort;
+    }
   }
  
   getTablaData() {
@@ -46,12 +52,20 @@ export class TableComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     }, 0);
   }
- /*  handleFilterChanged(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase(); 
-  } */
 
-  handleFilterChanged(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  onRowClick(product: Product) {
+    this.detailsId.emit(product);
+ 
+    }
   }
-}
+  
+
+  /* detailsId(id: number) {
+    this.verMasClicked.emit(id);
+
+    // Aquí se agrega el elemento clicado a la propiedad clickedRows
+    const clickedRow = this.dataSource.find((element: any) => element.id === id);
+    if (clickedRow) {
+      this.clickedRows.push(clickedRow);
+    }
+  } */

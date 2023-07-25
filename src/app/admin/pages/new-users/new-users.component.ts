@@ -14,18 +14,7 @@ interface Rols {
 })
 export class NewUsersComponent {
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
-
-  usersForm: FormGroup = new FormGroup({
-    nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    userName: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    password2: new FormControl('', Validators.required),
-    direccion: new FormControl('', Validators.required),
-    telefono: new FormControl('', Validators.required),
-    rol: new FormControl('', Validators.required),
-  });
+  formUser!: FormGroup;
 
   roles: Rols[] = [
     {value: 'admin-0', viewValue: 'Admin'},
@@ -33,5 +22,42 @@ export class NewUsersComponent {
   ];
 
 
-  regresar(){}
+  userFormFields = [
+    { name: 'nombre', label: 'Nombre Completo', type: 'text' },
+    { name: 'email', label: 'Correo', type: 'email' },
+    { name: 'userName', label: 'Usuario', type: 'text' },
+    { name: 'password', label: 'Contraseña', type: 'password' },
+    { name: 'confirmPassword', label: 'Confirmar Contraseña', type: 'password' },
+    { name: 'address', label: 'Direccion', type: 'text' },
+    { name: 'phone', label: 'Telefono', type: 'text' },
+    
+  ];
+  formTitle = 'Nuevo Usuario'; // Título del formulario
+
+  constructor(private formBuilder: FormBuilder,
+              private router: Router){}
+
+
+
+   ngOnInit() {
+    this.initForm();
+   }
+
+   initForm() {
+    this.formUser = this.formBuilder.group({
+      nombre: ['', [Validators.required, Validators.minLength(3)] ],
+      email: ['', [Validators.required, Validators.email]],
+      userName: ['', Validators.required],
+      password:   ['', Validators.required],
+      confirmPassword : ['', Validators.required],
+      address: ['', Validators.required],
+      phone:  ['', Validators.required],
+      roles:  ['', Validators.required],
+    });
+   }
+
+
+  regresar(){
+    this.router.navigate(['./admin']);
+  }
 }

@@ -1,0 +1,42 @@
+
+<h1 class="Titulo">{{ formTitle }}</h1>
+<div class="container">
+
+  <form [formGroup]="formUser" class="d-flex flex-column">
+    <div class="container-registro">
+      <div *ngFor="let field of fields" class="form-group container-input">
+        <mat-form-field>
+          <mat-label>{{ field.label }}</mat-label>
+          <input matInput [type]="field.type" [formControlName]="field.name">
+          <mat-error *ngIf="formUser.get(field.name)?.hasError('required')">El {{ field.label }} es requerido.</mat-error>
+          <mat-error *ngIf="formUser.get(field.name)?.hasError('email')">Correo inválido.</mat-error>
+          <mat-error *ngIf="field.name === 'password2' && formUser.get('password')?.value !== formUser.get('password2')?.value">Las contraseñas deben ser iguales.</mat-error>
+        </mat-form-field>
+      </div>
+        <!-- Selector de roles -->
+        <div *ngIf="showRolesSelector" class="form-group container-input">
+          <mat-form-field>
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="roles">
+              <mat-option *ngFor="let rol of roles" [value]="rol.value">
+                {{ rol.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+    </div>
+   
+    <!--container de botones-->
+    <div class="botton-register">
+      <div class="form-group container-botton">
+        <!-- Submit Button -->
+        <button type="button" class="btn btn-primary btn-lg botton-login" (click)="regresar()">Enviar</button>
+      </div>
+      <div class="form-group container-botton">
+        <!-- Submit Button -->
+        <button type="button" class="btn btn-primary btn-lg botton-login" (click)="regresar()">Regresar</button>
+      </div>
+    </div>
+  </form>
+</div>
+

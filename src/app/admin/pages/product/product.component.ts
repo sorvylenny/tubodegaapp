@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges, Pipe } from '@angular/core';
+import { Component,  Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/store/interfaces/store.interface';
@@ -67,9 +67,17 @@ export class ProductComponent implements OnInit {
   @Input() filterValue : string = ''; 
   Product: Product [] = [];
   filteredProducts = this.Product;
-  displayedColumns: string[] = this.tableColumns.map(column => column.ColumnDef) 
-  products: any;
+  displayedColumns: string[] = []; // Declaración vacía inicialmente
+  clickedRows: Product[] = [];
   filteredDataSource: any;
+  selectedProduct: Product = {
+    id: 0,
+    name:'',
+    price: 0,
+    description: '',
+    image: ''
+  }; 
+/*   selectedProduct: Product = {} as Product; */
   showButton: boolean = true;
   paginator: any;
 
@@ -82,6 +90,7 @@ export class ProductComponent implements OnInit {
     this.Product = productos;
     this.setTableColumns();
     this.handleFilterChanged('');
+   
     
   }
 
@@ -92,22 +101,35 @@ export class ProductComponent implements OnInit {
         // Replace 'name' with the property you want to filter on
         return item.name.toLowerCase().includes(this.filterValue.toLowerCase());
       });
-      console.log(this.filteredProducts);
+    
       this.productList = this.filteredProducts;
     }
   }
 
   getTablaData() {
     // Aquí obtienes los datos para la tabla
-    this.dataSource = new MatTableDataSource(this.products);
+    this.dataSource = new MatTableDataSource(this.Product);
     setTimeout(() => {
       this.dataSource.paginator = this.paginator;
     }, 0);
   }
-  
-  mostrarDetalle( id: number){
-    this.router.navigate(['admin/detailsProduct', id]);
+
+  selectedData(product: Product) {
+    this.selectedProduct = product;
+/*     this.router.navigate(['admin/detailsProduct', product.id]);
+    this.clickedRows.push(product); */
   }
+  
+  
+ /*  selectedData(id: any){
+     // Aquí debes obtener el producto seleccionado del array de productos 'productList'
+    // Puedes utilizar un método como 'find' para buscar el producto por su 'id'
+    this.selectedProduct = this.productList.find((product: Product) => product.id === id) || {} as Product;
+
+    // Luego, navegas a los detalles del producto utilizando el 'id' del producto seleccionado
+    this.router.navigate(['admin/detailsProduct', id]);
+  
+  } */
   
   setTableColumns() {
     this.tableColumns = [
@@ -116,9 +138,11 @@ export class ProductComponent implements OnInit {
       { ColumnDef: 'price', HeaderCellDef: 'Price',dataKey: 'price',  pipe: new CurrencyFormatPipe('es-CO') },
       { ColumnDef: 'description', HeaderCellDef: 'Description', dataKey: 'description' },
       { ColumnDef: 'image', HeaderCellDef: 'Image', dataKey: 'image', altText : '' },
-      { ColumnDef: 'verMas', HeaderCellDef: 'Ver más', dataKey: 'verMas', button: true },
+      
       
     ];
+    this.displayedColumns = this.tableColumns.map(column => column.ColumnDef);
+  
   }
 }
 
