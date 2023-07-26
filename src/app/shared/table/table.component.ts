@@ -53,19 +53,27 @@ export class TableComponent implements OnInit, AfterViewInit  {
     }, 0);
   }
 
-  onRowClick(product: Product) {
+  /* onRowClick(product: Product) {
     this.detailsId.emit(product);
  
+    } */
+    /* onRowClick(row: any) {
+      // Aquí puedes realizar alguna acción al hacer clic en una fila
+      console.log('Row clicked:', row);
+      // También puedes almacenar la fila seleccionada en la variable clickedRows si lo deseas
+      this.clickedRows.push(row);
+    } */
+
+     onRowClick(id: number | any) {
+      this.detailsId.emit(id);
+  
+      // Aquí se agrega el elemento clicado a la propiedad clickedRows
+      const clickedRow = this.dataSource.find((element: any) => element.id === id);
+      if (clickedRow) {
+        this.clickedRows.push(clickedRow);
+      }
+      console.log(clickedRow)
     }
   }
   
 
-  /* detailsId(id: number) {
-    this.verMasClicked.emit(id);
-
-    // Aquí se agrega el elemento clicado a la propiedad clickedRows
-    const clickedRow = this.dataSource.find((element: any) => element.id === id);
-    if (clickedRow) {
-      this.clickedRows.push(clickedRow);
-    }
-  } */

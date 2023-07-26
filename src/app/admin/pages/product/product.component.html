@@ -5,8 +5,4 @@
   <app-table [data] ="productList" [columns] ="tableColumns" (detailsId)="selectedData($event)"  [showButton]="true"></app-table>
 </section>
 
-<!-- Mostrar la tarjeta del producto seleccionado -->
-<div *ngIf="selectedData">
-  <app-card [products]="selectedProduct"></app-card>
-</div>
 

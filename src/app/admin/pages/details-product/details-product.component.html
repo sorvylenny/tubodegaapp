@@ -1,1 +1,16 @@
-<p>details-product works!</p>
+
+<!--  <--Mostrar la tarjeta del producto seleccionado --> 
+<div *ngIf="selectedProduct">
+    <!-- <app-card [products]="selectedProduct"></app-card> -->
+    <app-card
+  [title]="selectedProduct.name.toString()"
+  [subtitle]="selectedProduct.price.toString()"
+  [imageUrl]="selectedProduct.image"
+  imageAlt="Imagen del producto"
+  [content]="selectedProduct.description"
+  [buttonText]="'Regresar'"
+  (buttonAction)="regresar()"
+  ></app-card>
+
+  </div>
+

@@ -65,7 +65,7 @@ export class ProductComponent implements OnInit {
   productList = productos;
   @Input() dataSource!: any;
   @Input() filterValue : string = ''; 
-  Product: Product [] = [];
+  @Input() Product: Product [] = [];
   filteredProducts = this.Product;
   displayedColumns: string[] = []; // Declaración vacía inicialmente
   clickedRows: Product[] = [];
@@ -77,11 +77,7 @@ export class ProductComponent implements OnInit {
     description: '',
     image: ''
   }; 
-/*   selectedProduct: Product = {} as Product; */
-  showButton: boolean = true;
   paginator: any;
-
-
 
 
   constructor(private router: Router ) {}
@@ -90,8 +86,7 @@ export class ProductComponent implements OnInit {
     this.Product = productos;
     this.setTableColumns();
     this.handleFilterChanged('');
-   
-    
+    this.getTablaData();
   }
 
   handleFilterChanged(filterValue: string) {
@@ -115,21 +110,12 @@ export class ProductComponent implements OnInit {
   }
 
   selectedData(product: Product) {
-    this.selectedProduct = product;
-/*     this.router.navigate(['admin/detailsProduct', product.id]);
-    this.clickedRows.push(product); */
-  }
+    if (product && product.id !== undefined) {
+      this.selectedProduct = product;
+      this.router.navigate(['admin/detailsProduct', product.id]);
+    } 
+}
   
-  
- /*  selectedData(id: any){
-     // Aquí debes obtener el producto seleccionado del array de productos 'productList'
-    // Puedes utilizar un método como 'find' para buscar el producto por su 'id'
-    this.selectedProduct = this.productList.find((product: Product) => product.id === id) || {} as Product;
-
-    // Luego, navegas a los detalles del producto utilizando el 'id' del producto seleccionado
-    this.router.navigate(['admin/detailsProduct', id]);
-  
-  } */
   
   setTableColumns() {
     this.tableColumns = [
@@ -138,8 +124,7 @@ export class ProductComponent implements OnInit {
       { ColumnDef: 'price', HeaderCellDef: 'Price',dataKey: 'price',  pipe: new CurrencyFormatPipe('es-CO') },
       { ColumnDef: 'description', HeaderCellDef: 'Description', dataKey: 'description' },
       { ColumnDef: 'image', HeaderCellDef: 'Image', dataKey: 'image', altText : '' },
-      
-      
+          
     ];
     this.displayedColumns = this.tableColumns.map(column => column.ColumnDef);
   
