@@ -1,0 +1,36 @@
+<form [formGroup]="formProduct" (ngSubmit)="onSubmit()" class="">
+    <mat-form-field>
+    <mat-label>Nombre del Producto</mat-label>
+      <input matInput  formControlName="name" name="name" required>
+    </mat-form-field>
+  
+    <mat-form-field>
+        <mat-label>Descripción del Producto</mat-label>
+      <input matInput  formControlName="description" name="description" required>
+    </mat-form-field>
+  
+    <mat-form-field>
+        <mat-label>Precio</mat-label>
+      <input matInput type="number" placeholder="Precio" formControlName="price" name="price" required>
+    </mat-form-field>
+  
+    <mat-form-field class="Imagen">
+        <mat-label>Imagen</mat-label>
+      <input matInput formControlName="imageUrl" name="imageUrl" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" class="button">Añadir producto</button>
+  
+    <mat-form-field>
+        <mat-label>Cantidad</mat-label>
+      <input matInput type="number" formControlName="quantity" name="quantity" required>
+    </mat-form-field>
+  
+    <mat-form-field>
+        <mat-label>Precio Neto</mat-label>
+      <input matInput type="number" placeholder="Monto neto" formControlName="netAmount" name="netAmount" required>
+    </mat-form-field>
+    <div class="Button-Add">
+        <button mat-raised-button color="primary" type="submit" >Añadir producto</button>
+    </div>
+  </form>
+  

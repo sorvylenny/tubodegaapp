@@ -2,7 +2,7 @@
 <h2>Productos</h2>
 <section>
   <app-filter [dataSource]="dataSource" (filterChanged)="handleFilterChanged($event)"></app-filter>
-  <app-table [data] ="productList" [columns] ="tableColumns" (detailsId)="selectedData($event)"  [showButton]="true"></app-table>
+  <app-table [data] ="productList" [columns] ="tableColumns" (detailsId)="selectedData($event)"></app-table>
 </section>
 
 

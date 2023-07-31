@@ -12,6 +12,7 @@ import { NewUsersComponent } from './pages/new-users/new-users.component';
 import { DetailsUserComponent } from './pages/details-user/details-user.component';
 import { DetailsProductComponent } from './pages/details-product/details-product.component';
 import { SharedModule } from '../shared/shared.module';
+import { NewProductComponent } from './pages/new-product/new-product.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { SharedModule } from '../shared/shared.module';
     ProductComponent,
     DetailsUserComponent,
     DetailsProductComponent,
+    NewProductComponent,
  ],
   imports: [
     CommonModule,

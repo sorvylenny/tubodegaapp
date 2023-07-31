@@ -8,6 +8,7 @@ import { UsersComponent } from './users/users.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { DetailsUserComponent } from './pages/details-user/details-user.component';
 import { DetailsProductComponent } from './pages/details-product/details-product.component';
+import { NewProductComponent } from './pages/new-product/new-product.component';
 
 
 
@@ -37,6 +38,10 @@ const routes: Routes = [
       {
         path:'detailsProduct/:id',
         component: DetailsProductComponent,
+      },
+      {
+        path:'newProduct',
+        component: NewProductComponent,
       },
     ],
   },

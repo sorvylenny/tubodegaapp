@@ -1,0 +1,17 @@
+mat-form-field{
+    width: 100%;
+}
+
+.Imagen{
+    width: 80%;
+}
+.button{
+    width: 20%;
+
+}
+
+.Button-Add{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
