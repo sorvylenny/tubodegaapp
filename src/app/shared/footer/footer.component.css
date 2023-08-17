@@ -1,46 +1,111 @@
-
-/* Estilos generales para el footer */
-footer {
-  position: relative;
+/* Footer styles */
+.pmd-footer {
+  background-color: #3f51b5;
+  color: #ffffff;
+  padding: 80px 0;
   width: 100%;
-  padding: 20px 0;
+  height: auto;
 }
 
-.spacer {
-  flex: 1 1 auto;
+.pmd-footer .footer-dad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.footer-dad {
+.pmd-footer .list-footer {
   display: flex;
   justify-content: center;
-  width: 100%;
+  flex-wrap: wrap;
 }
 
-.shop {
+.pmd-footer .pmd-footer-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pmd-footer .pmd-footer-nav li {
+  margin: 5px 10px;
+  text-transform: uppercase;
   text-align: center;
+  font-size: 14px;
 }
 
-.link-footer {
-  color: white;
+.pmd-footer .pmd-social-icons {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
 }
 
-/* Estilos para dispositivos móviles */
-@media (max-width: 767px) {
-  footer {
-    padding: 10px 0; /* Ajusta el padding según tus necesidades */
+.pmd-footer .pmd-footer-nav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.pmd-footer .pmd-site-info {
+  text-align: center;
+  margin: 2px;
+}
+
+.pmd-footer .pmd-site-info a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 425px) {
+  .pmd-footer .col-xl-3 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10px 0;
+  }
+
+  .pmd-footer .footer-dad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
   
-  .footer-dad {
-    flex-direction: column; /* Cambia a una disposición de columna */
-    align-items: center; /* Centra los elementos en la columna */
+  .pmd-footer .list-footer {
+    flex-direction: column;
+    align-items: center;
   }
   
-  .spacer {
-    flex: none; /* Elimina el espacio flexible en dispositivos móviles */
-    height: 10px; /* Ajusta la altura de espacio según tus necesidades */
+  .pmd-footer .pmd-footer-nav {
+    flex-direction: column;
+    align-items: center;
   }
   
-  .shop {
-    margin-top: 10px; /* Agrega un margen superior para separar los elementos */
+  .pmd-footer .pmd-footer-nav li {
+    margin: 5px 0;
+    font-size: 10px;
+    text-align: center;
+  }
+  
+  .pmd-footer .pmd-site-info {
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  .pmd-footer .pmd-social-icons {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0; 
+  }
+  
+  .pmd-footer .pmd-site-info a {
+    color: #ffffff;
+    text-decoration: underline;
   }
 }
+
+
+
+
