@@ -1,5 +1,5 @@
 
-
+/* Estilos generales para el footer */
 footer {
   position: relative;
   width: 100%;
@@ -10,17 +10,37 @@ footer {
   flex: 1 1 auto;
 }
 
-.footer-dad{
+.footer-dad {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-
-.shop{
+.shop {
   text-align: center;
 }
 
-.link-footer{
+.link-footer {
   color: white;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+  footer {
+    padding: 10px 0; /* Ajusta el padding según tus necesidades */
+  }
+  
+  .footer-dad {
+    flex-direction: column; /* Cambia a una disposición de columna */
+    align-items: center; /* Centra los elementos en la columna */
+  }
+  
+  .spacer {
+    flex: none; /* Elimina el espacio flexible en dispositivos móviles */
+    height: 10px; /* Ajusta la altura de espacio según tus necesidades */
+  }
+  
+  .shop {
+    margin-top: 10px; /* Agrega un margen superior para separar los elementos */
+  }
 }

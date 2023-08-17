@@ -1,44 +1,63 @@
-.container-registro{
-    display: grid;
-    justify-content: normal;
+/* Estilos generales para el formulario */
+.container-registro {
+  display: grid;
+  justify-content: normal;
+}
+
+.container-input {
+  display: contents;
+  width: 100%;
+}
+
+.container-botton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.botton-login {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  border: 1px solid #386bc0;
+  border-radius: 2rem;
+  background-color: #386bc0;
+  color: white;
+  font-size: 1rem;
+}
+
+.botton-register {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Titulo {
+  margin: 2rem;
+  text-align: center;
+}
+
+.container-imagen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+  .container-registro {
+    justify-content: center; /* Centrar el contenido en dispositivos móviles */
   }
   
-  .container-input{
-    display: contents;
-    width: 100%;
+  .container-botton {
+    margin-top: 10px; /* Ajustar el margen superior en dispositivos móviles */
   }
   
-  .container-botton{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  .botton-register {
+    flex-direction: column; /* Cambiar a una disposición de columna */
+    align-items: center; /* Centrar elementos en columna */
   }
   
-  .botton-login{
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
-    border: 1px solid #386bc0;
-    border-radius: 2rem;
-    background-color: #386bc0;
-    color: white;
-    font-size: 1rem;
+  .botton-login {
+    padding: 1rem; /* Ajustar el padding en dispositivos móviles */
+    font-size: 0.9rem; /* Reducir el tamaño de fuente en dispositivos móviles */
   }
-  
-  .botton-register{
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  
-  .Titulo{
-    margin: 2rem;
-    text-align: center;
-  }
-  
-  .container-imagen{
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-  
- 
+}

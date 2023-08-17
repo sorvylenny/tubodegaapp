@@ -10,7 +10,7 @@
         <div class="d-flex flex-row container-sing">
           <p class="lead fw-normal p-sing">Iniciar con</p>
           <button mat-fab color="seconday">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+            <svg xmlns="http://www.w3.org/200path0/svg" width="16" height="16"
               fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
               <path
                 d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
@@ -35,8 +35,8 @@
         </div>
 
         <!-- Email input -->
-        <form [formGroup]="loginForm" class="d-flex flex-column">
-          <div class="d-flex flex-column">
+        <form [formGroup]="loginForm" class="d-flex flex-column ">
+          <div class="d-flex flex-column form-login">
             <mat-form-field>
               <mat-label>Correo</mat-label>
               <input matInput [type]="'email'" formControlName="email">
@@ -63,7 +63,7 @@
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2 container-botton">
-              <button mat-extended-button class="botton-login" color="basic" (click)="submit()">Login</button>
+              <button mat-fab extended class="botton-login" color="primary" (click)="submit()">Login</button>
               <p class="small fw-bold mt-2 pt-1 mb-0 p-registro">No tienes una
                 cuenta? <a href="./auth/registro"
                   class="link-danger">Registrame</a></p>

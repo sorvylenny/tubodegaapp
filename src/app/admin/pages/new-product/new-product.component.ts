@@ -32,5 +32,5 @@ export class NewProductComponent {
     console.log(this.formProduct.value);
     // Limpia el formulario después de enviar los datos
     this.formProduct.reset();
-}
+   }
 }

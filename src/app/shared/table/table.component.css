@@ -1,26 +1,53 @@
-
-/* Structure */
+/* Estructura general de la tabla */
 table {
-    width: 100%;
-  }
-  
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+img {
+  width: 50%;
+  height: 50%;
+  display: block;
+  margin: 10px auto;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: justify;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
   .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
+    font-size: 12px; /* Tamaño de fuente más pequeño para dispositivos móviles */
   }
-  
-  img{
-    width: 50%;
-    height: 50%;
-    display: block;
-    margin: 10px auto;
+
+  table {
+    display: block; /* Convertir la tabla en un bloque en dispositivos móviles */
+    overflow-x: auto; /* Agregar desplazamiento horizontal si la tabla es demasiado ancha */
   }
-  
-  th{
-    text-align: center;
+
+  th,
+  td {
+    text-align: center; /* Centrar el contenido en celdas en dispositivos móviles */
   }
-  
-  td{
-    text-align: justify;
+
+  img {
+    width: 100%; /* Ajustar el ancho de las imágenes al 100% en dispositivos móviles */
+    height: auto; /* Ajustar la altura automáticamente */
+    margin: 10px 0; /* Ajustar los márgenes superior e inferior */
   }
-  
+}
+
+/* Estilos para pantallas web */
+@media (min-width: 768px) {
+  .mat-mdc-form-field {
+    font-size: 16px; /* Tamaño de fuente más grande para páginas web */
+  }
+}

@@ -1,11 +1,19 @@
-
 :host {
-  flex: 0 1 calc(33.33% - 20px);
+  flex: 0 1 calc(50% - 20px); /* Cambio de 33.33% a 50% para dos elementos por fila */
   margin: 10px;
   max-width: 400px;
-  height: 400px;
+  height: auto; /* Cambio de altura fija a altura automática */
   display: flex;
   flex-direction: column;
+}
+
+/* Agregamos una media query para dispositivos móviles */
+@media (max-width: 767px) {
+  :host {
+    flex: 0 1 calc(100% - 20px); /* Ocupa todo el ancho disponible en dispositivos móviles */
+    margin: 10px;
+    max-width: none; /* Elimina el ancho máximo en dispositivos móviles */
+  }
 }
 
 .mat-card {
@@ -29,17 +37,16 @@ button {
   margin-bottom: 5px;
   width: 100%;
   text-align: center;
- }
+}
 
-.price{
+.price {
   font-weight: 700;
   font-size: 14px;
   line-height: 1.2;
   margin-bottom: 15px;
-
 }
 
-.imagen{
+.imagen {
   display: flex;
   justify-content: center;
   margin: auto;
@@ -47,10 +54,9 @@ button {
   height: 120px;
 }
 
-.descripcion{
+.descripcion {
   font-size: 14px;
   line-height: 1.4;
   margin-bottom: 5px;
   text-align: justify;
 }
-
