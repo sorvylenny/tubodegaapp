@@ -7,6 +7,7 @@ mat-form-field{
 }
 .button{
     width: 20%;
+    border-radius: 2rem;
 
 }
 
@@ -15,3 +16,24 @@ mat-form-field{
    justify-content: center;
    align-items: center;
 }
+/* Estilos para dispositivos móviles */
+@media (max-width: 425px) {
+    .mat-form-field {
+      width: 100%;
+    }
+  
+    .Imagen {
+      width: 100%;
+    }
+  
+    .button {
+      width: 100%;
+    }
+  
+    .Button-Add {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
