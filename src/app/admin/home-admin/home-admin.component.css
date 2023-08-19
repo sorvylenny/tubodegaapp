@@ -1,34 +1,40 @@
 
 /* Estilos para dispositivos móviles */
 @media (max-width: 767px) {
-  /* Ajustar margen para que el menú no quede muy pegado al borde */
+  /* Ajusta margen para que el menú no quede muy pegado al borde */
   mat-sidenav {
     margin-left: 10px;
   }
   
-  /* Ajustar tamaño de fuente y margen en los ítems de la lista */
+  /* Ajusta tamaño de fuente y margen en los ítems de la lista */
   .mat-nav-list a {
     font-size: 14px;
     margin: 5px 0;
   }
   
-  /* Centrar el texto en los ítems de la lista */
+  /* Centra el texto en los ítems de la lista */
   .mat-nav-list a span {
     display: inline-block;
     vertical-align: middle;
     margin-left: 10px;
   }
   
-  /* Ajustar margen en el botón de Logout */
+  /* Ajusta margen en el botón de Logout */
   .boton {
     margin:40%;
-    display: flex; /* Agregar esta línea para asegurar que el botón ocupe el espacio disponible */
-    align-items: center; /* Alinear elementos verticalmente */
+    display: flex; /* Agrega esta línea para asegurar que el botón ocupe el espacio disponible */
+    align-items: center; /* Alinea elementos verticalmente */
   }
 }
+
+.footer-Admin{
+  position: static; 
+  margin-top: 300Px; 
+}
+
 /* Estilos para pantallas más grandes */
 @media (min-width: 768px) {
-  /* Ajustar margen derecho para el botón de Logout */
+  /* Ajusta margen derecho para el botón de Logout */
   .boton {
     margin: 65%;
     width:100%;

@@ -14,13 +14,14 @@ import { SharedModule } from '../shared/shared.module';
 
 
 
+
 @NgModule({
   declarations: [
     HomeComponent,
-    BodyComponent,
-    ProductosComponent,
-    BuscarComponent,
     CartComponent,
+    BodyComponent,
+    BuscarComponent,
+    ProductosComponent,
     
     ],
   imports: [
@@ -29,9 +30,13 @@ import { SharedModule } from '../shared/shared.module';
     IvyCarouselModule,
     StoreRoutingModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
   exports:[
+    HomeComponent,
+    CartComponent,
+    BodyComponent,
+    BuscarComponent,
     ProductosComponent,
   ]
 })

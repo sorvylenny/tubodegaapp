@@ -16,5 +16,6 @@ export class HeaderComponent {
   goToAuth(){
     this.router.navigate(['auth/login']);
   }
+  logout(){}
 
 }

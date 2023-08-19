@@ -1,10 +1,92 @@
-<div>
-  <app-header></app-header>
-</div>
-<div>
-  <app-body></app-body>
-</div>
+<!-- Probando el codigo en el home para pasarlo en el header -->
 
-<div>
-  <app-footer></app-footer>
-</div>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push">
+    <mat-toolbar color="primary">
+      <span>Menú</span>
+      <span class="spacer"></span>
+
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a routerLink="#" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>assignment_add</mat-icon>
+        <span>Nuevo Lanzamientos</span>
+      </a>
+      <a routerLink="./productos" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>playlist_add_check</mat-icon>
+        <span> Listado de Productos</span>
+      </a>
+        <hr size="1px" color="black" />
+    
+      <a routerLink="#" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>live_help</mat-icon>
+        <span> Información</span>
+      </a>
+      <a routerLink="#" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>contacts</mat-icon>
+        <span>Contacto</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+
+    <span>Shop</span>
+   
+    <div class="boton">
+      <span class="example-spacer"></span>
+      <button
+        mat-icon-button
+        class="example-icon favorite-icon" [matMenuTriggerFor]="notificationsMenu">
+        <mat-icon>perm_identity</mat-icon>
+      </button>
+      <mat-menu #notificationsMenu="matMenu">
+        <button mat-menu-item (click)="goToAuth('login')"> Ingresar </button>
+        <button mat-menu-item (click)=" goToAuth('register')">Registro</button>
+       </mat-menu>
+      <span class="fill-remaining-space"></span>
+      <button
+        mat-icon-button
+        class="example-icon"
+        [matMenuTriggerFor]="notificationsMenu"
+      >
+        <mat-icon>notifications</mat-icon>
+        <mat-badge matBadgeColor="warn" matBadge="5"></mat-badge>
+      </button>
+      <mat-menu #notificationsMenu="matMenu">
+        <button mat-menu-item>Notification 1</button>
+        <button mat-menu-item>Notification 2</button>
+        <button mat-menu-item>Notification 3</button>
+      </mat-menu>
+
+      <span class="fill-remaining-space"></span>
+
+      <button mat-icon-button class="example-icon" (click)="goToCart()">
+        <mat-icon>add_shopping_cart</mat-icon>
+        <mat-badge matBadgeColor="warn" matBadge="3"></mat-badge>
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+   <div>
+      <app-body></app-body>  
+    </div>
+    <!-- //TODO: solucionar bug del body  -->
+  </div>
+  <div>
+    <app-footer></app-footer>
+  </div>
+  
+</mat-sidenav-container>
+

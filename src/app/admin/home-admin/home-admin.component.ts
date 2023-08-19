@@ -9,9 +9,12 @@ import { ChatDialogComponent } from 'src/app/shared/chat-dialog/chat-dialog.comp
   styleUrls: ['./home-admin.component.css']
 })
 export class HomeAdminComponent {
+  
+  showProduct: boolean = true;
 
   constructor( private router: Router,
                private dialog: MatDialog){}
+                   
 
   logout(){
     const dialog = this.dialog.open(ChatDialogComponent, {

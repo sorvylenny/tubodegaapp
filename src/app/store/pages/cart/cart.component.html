@@ -1,5 +1,34 @@
-<p>cart works!</p>
+<!-- TODO: maquetar el carrito desde 0 "lo que copie solo era un ejemplo" -->
+<p>Carrito de Compras</p>
 
-
-
-<h1>Hola</h1>
+<!-- <div class="container">
+  <table mat-table [dataSource]="productos">
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let producto"> {{ producto.nombre }} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="precio">
+          <th mat-header-cell *matHeaderCellDef> Precio </th>
+          <td mat-cell *matCellDef="let producto"> {{ producto.precio | currency }} </td>
+        </ng-container>
+           
+        <tr mat-row *matRowDef="let producto; columns: displayedColumns;"></tr>
+      </table>
+  <div>
+    <mat-card *ngFor="let producto of productosEnCarrito">
+      <mat-card-header>
+        <mat-card-title>{{ producto.nombre }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Precio: {{ producto.precio | currency }}</p>
+       
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="eliminarDelCarrito(producto)">
+          Eliminar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div> -->

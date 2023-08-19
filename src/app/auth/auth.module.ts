@@ -23,7 +23,13 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
-    MaterialModule
+    MaterialModule, 
+    StoreModule
+  ],
+  exports: [
+    LayoutPageComponent,
+    LoginPageComponent,
+    RegisterPageComponent
   ]
 })
 export class AuthModule { }
