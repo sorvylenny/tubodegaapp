@@ -57,4 +57,16 @@ export class ProductosComponent {
   addToCart(product: Product) {
     this.cartItems.push(product);
   }
+
+/*   products: Product[] = [...]; // Tu arreglo de productos
+  cart: CartItem[] = []; // Arreglo para almacenar los productos en el carrito
+  addToCart(product: Product) {
+    const existingCartItem = this.cart.find(item => item.product.id === product.id);
+
+    if (existingCartItem) {
+      existingCartItem.quantity++;
+    } else {
+      this.cart.push({ product, quantity: 1 });
+    }
+  } */
 }

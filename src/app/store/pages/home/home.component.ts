@@ -7,27 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
- 
+  mostrarAppBody = true;
  constructor(private router: Router) {}
  
-/*  shouldShowBodyContent(): any {
-  // Obtener la ruta actual
-  const currentUrl = this.router.url;
-  if (currentUrl === 'store' ){
-   return true;
-  } else if (currentUrl !=='store') {
-     // Verificar si se debe mostrar el contenido del cuerpo basado en la ruta
-     return false;
-    }
-  } */
-
-  shouldShowAuthContent(): boolean {
-    const currentUrl = this.router.url;
-    return currentUrl !== 'store';
-  }
-
-  // Resto de tu código...
-
   goToCart(){
     this.router.navigate(['store/cart']);
   }
@@ -38,6 +20,30 @@ export class HomeComponent {
         this.router.navigate(['auth/registro']);
       }
     }
+
+    onMenuClick() {
+      this.mostrarAppBody = false;
+    }
+  
+    // Método para manejar el inicio de sesión
+    onLoginClick() {
+      this.mostrarAppBody = false;
+    }
+  
+    // Método para manejar el registro
+    onRegistroClick() {
+      this.mostrarAppBody = false;
+    }
+  
+    // Método para manejar el clic en el carrito
+    onCartClick() {
+      this.mostrarAppBody = false;
+    }
+
+    onShop() {
+      this.mostrarAppBody = true;
+    }
+  
 
   logout(){}
 

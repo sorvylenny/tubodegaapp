@@ -26,6 +26,11 @@
       display: flex; /* Agrega esta línea para asegurar que el botón ocupe el espacio disponible */
       align-items: center; /* Alinea elementos verticalmente */
     }
+
+    .shop{
+      margin: auto;
+      padding-bottom: 0%;
+    }
   }
   
   /* Estilos para pantallas más grandes */
