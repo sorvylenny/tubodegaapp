@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/store.interface';
 
 @Component({
@@ -6,9 +6,11 @@ import { Product } from '../../interfaces/store.interface';
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
-export class ProductosComponent {
-
-  productos: Product[] = [
+export class ProductosComponent implements OnInit {
+  filteredProducts: Product[] = [];
+  filterValue: string = '';
+  
+  productList: Product[] = [
     {
       id: 1,
       name: 'Azúcar Incauca light vitamina D3, bolsa 750g',
@@ -51,9 +53,14 @@ export class ProductosComponent {
       description: 'El Spaghetti es una pasta larga con múltiples y fáciles formas de preparación; perfecta para acompañar con salsas, carnes y verduras.',
       image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/186130-800-800?v=637813981192900000&width=800&height=800&aspect=true'
     },
-
+    
   ];
+  ngOnInit(): void {
+    this.Product = this.productList;
+    this.handleFilterChanged('');
+  }
   cartItems: Product[] = [];
+  Product: any;
   addToCart(product: Product) {
     this.cartItems.push(product);
   }
@@ -69,4 +76,16 @@ export class ProductosComponent {
       this.cart.push({ product, quantity: 1 });
     }
   } */
+
+   handleFilterChanged(filterValue: string) {
+    this.filterValue = filterValue;
+    if (this.Product) {
+      this.filteredProducts = this.Product.filter((item: Product) => {
+        // Replace 'name' with the property you want to filter on
+        return item.name.toLowerCase().includes(this.filterValue.toLowerCase());
+      });
+      console.log( this.filteredProducts);
+      this.productList = this.filteredProducts;
+    }
+  }
 }

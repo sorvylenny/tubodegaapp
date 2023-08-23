@@ -10,10 +10,15 @@ import { ChatDialogComponent } from 'src/app/shared/chat-dialog/chat-dialog.comp
 })
 export class HomeAdminComponent {
   
-  showProduct: boolean = true;
+  mostrarAppBody = true;
 
   constructor( private router: Router,
                private dialog: MatDialog){}
+
+    // Método para manejar el clic en el menu
+  onMenuClick() {
+    this.mostrarAppBody = false;
+  }
                    
 
   logout(){

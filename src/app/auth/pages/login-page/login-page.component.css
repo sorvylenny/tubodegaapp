@@ -32,13 +32,13 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: auto; /* Ajustar la altura automáticamente en dispositivos móviles */
+    height: auto; /* Ajusta la altura automáticamente en dispositivos móviles */
     margin-bottom: 1rem;
   }
 
   .container-imagen img {
-    max-width: 100%; /* Asegurar que la imagen se ajuste al ancho de su contenedor */
-    height: auto; /* Ajustar la altura automáticamente */
+    max-width: 100%; /* Asegura que la imagen se ajuste al ancho de su contenedor */
+    height: auto; /* Ajusta la altura automáticamente */
   }
 
   .container-input{
@@ -62,11 +62,11 @@
   }
 
   .container-sing {
-    margin: 0.5rem 1rem; /* Reducir el margen lateral */
+    margin: 0.5rem 1rem; /* Reduce el margen lateral */
   }
 
   .form-login {
-    width: 100%; /* Asegurar que el formulario ocupe el ancho completo */
+    width: 100%; /* Asegura que el formulario ocupe el ancho completo */
     margin-top: 1rem;
   }
 
@@ -130,7 +130,7 @@
   }
 
   .form-login {
-    width: 100%; /* Asegurar que el formulario ocupe el ancho completo */
+    width: 100%; /* Asegura que el formulario ocupe el ancho completo */
     margin-top: 1rem;
   }
 

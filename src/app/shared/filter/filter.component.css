@@ -6,7 +6,7 @@ mat-form-field {
   /* Estilos para dispositivos móviles */
   @media (max-width: 767px) {
     mat-form-field {
-      width: 100%; /* Puedes ajustar este valor según tus necesidades */
+      width: 100%; /* Ajusta el valor del width */
     }
   }
   

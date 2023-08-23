@@ -6,7 +6,7 @@ import { ChatDialogComponent } from './chat-dialog/chat-dialog.component';
 import { FilterComponent } from './filter/filter.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from './header/header.component';
+
 import { MaterialModule } from '../material/material.module';
 import { PaymentComponent } from './payment/payment.component';
 import { TableComponent } from './table/table.component';
@@ -19,7 +19,6 @@ import { FormUserComponent } from './form-user/form-user.component';
     CardComponent,
     ChatDialogComponent,
     FooterComponent,
-    HeaderComponent,
     PaymentComponent,
     TableComponent,
     FilterComponent,
@@ -38,7 +37,6 @@ import { FormUserComponent } from './form-user/form-user.component';
     ChatDialogComponent,
     FilterComponent,
     FooterComponent,
-    HeaderComponent,
     PaymentComponent,
     TableComponent, 
     FormUserComponent

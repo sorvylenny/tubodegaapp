@@ -19,7 +19,9 @@ th {
 }
 
 td {
-  text-align: justify;
+  text-align: center;
+  line-height: 1.5;
+  
 }
 
 /* Estilos para dispositivos móviles */
@@ -29,19 +31,19 @@ td {
   }
 
   table {
-    display: block; /* Convertir la tabla en un bloque en dispositivos móviles */
-    overflow-x: auto; /* Agregar desplazamiento horizontal si la tabla es demasiado ancha */
+    display: block; /* Converte la tabla en un bloque en dispositivos móviles */
+    overflow-x: auto; /* Agrega desplazamiento horizontal si la tabla es demasiado ancha */
   }
 
   th,
   td {
-    text-align: center; /* Centrar el contenido en celdas en dispositivos móviles */
+    text-align: center; /* Centra el contenido en celdas en dispositivos móviles */
   }
 
   img {
-    width: 100%; /* Ajustar el ancho de las imágenes al 100% en dispositivos móviles */
-    height: auto; /* Ajustar la altura automáticamente */
-    margin: 10px 0; /* Ajustar los márgenes superior e inferior */
+    width: 100%; /* Ajusta el ancho de las imágenes al 100% en dispositivos móviles */
+    height: auto; /* Ajusta la altura automáticamente */
+    margin: 10px 0; /* Ajusta los márgenes superior e inferior */
   }
 }
 

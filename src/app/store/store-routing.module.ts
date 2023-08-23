@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { BuscarComponent } from './pages/buscar/buscar.component';
 import { ProductComponent } from '../admin/pages/product/product.component';
 import { CartComponent } from './pages/cart/cart.component';
 
@@ -11,10 +10,6 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
-      {
-        path: 'buscar',
-        component: BuscarComponent,
-      },
       {
         path: 'cart',
         component: CartComponent,

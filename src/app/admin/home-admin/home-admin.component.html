@@ -1,3 +1,4 @@
+<!-- header del modulo admin -->
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="push">
     <mat-toolbar color="primary">
@@ -8,8 +9,8 @@
         <mat-icon>menu</mat-icon>
       </button>
     </mat-toolbar>
-
-    <mat-nav-list>
+<!-- Lista del modulo admin -->
+    <mat-nav-list (click)="onMenuClick()">
       <a routerLink="./user" mat-list-item (click)="sidenav.toggle()">
         <mat-icon mat-list-icon>sort</mat-icon>
         <span> Listado de Usuario</span>
@@ -54,12 +55,12 @@
       </button>
     </div>
   </mat-toolbar>
-
+ <!-- Entrutador y modulos home admin -->
   <div class="container">
     <router-outlet></router-outlet>
-  </div>
-  <div class="container">
-    <app-product></app-product>
+    <div *ngIf="mostrarAppBody">
+      <app-product></app-product>
+    </div>
   </div>
   <div class="footer-Admin"><app-footer></app-footer></div>
 </mat-sidenav-container>

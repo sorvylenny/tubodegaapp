@@ -69,7 +69,6 @@ export class ProductComponent implements OnInit {
   filteredProducts = this.Product;
   displayedColumns: string[] = []; // Declaración vacía inicialmente
   clickedRows: Product[] = [];
-  filteredDataSource: any;
   selectedProduct: Product = {
     id: 0,
     name:'',
@@ -129,7 +128,13 @@ export class ProductComponent implements OnInit {
     this.displayedColumns = this.tableColumns.map(column => column.ColumnDef);
   
   }
+  detailsId(event:any): void {
+    // Aquí puedes usar el ID para navegar a la página de detalles
+    this.router.navigate(['admin/detailsProduct', event]);
+  }
 }
+
+
 
 /*   handleFilterChanged(filterValue: string) {
     this.filterValue = filterValue;

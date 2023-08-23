@@ -1,8 +1,10 @@
+<app-filter (filterChanged)="handleFilterChanged($event)"></app-filter>
 
-<h1>Productos</h1>
+<!-- Aquí se mostrarán las tarjetas de los productos filtrados -->
+<h1 class="Text-Product">Productos</h1>
 <mat-divider></mat-divider>
 <div class="custom-grid-container">
-  <app-card *ngFor="let product of productos"
+  <app-card *ngFor="let product of productList"
   [title]="product.name.toString()"
   [subtitle]="product.price.toString()"
   [imageUrl]="product.image"

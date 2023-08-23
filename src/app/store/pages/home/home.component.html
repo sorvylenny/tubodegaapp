@@ -1,3 +1,4 @@
+<!-- header del modulo user -->
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="push">
     <mat-toolbar color="primary">
@@ -8,7 +9,7 @@
         <mat-icon>menu</mat-icon>
       </button>
     </mat-toolbar>
-
+    <!-- Lista del modulo user -->
     <mat-nav-list (click)="onMenuClick()">
       <a routerLink="#" mat-list-item (click)="sidenav.toggle()">
         <mat-icon mat-list-icon>assignment_add</mat-icon>
@@ -18,8 +19,8 @@
         <mat-icon mat-list-icon>playlist_add_check</mat-icon>
         <span> Listado de Productos</span>
       </a>
-        <hr size="1px" color="black" />
-    
+      <hr size="1px" color="black" />
+
       <a routerLink="#" mat-list-item (click)="sidenav.toggle()">
         <mat-icon mat-list-icon>live_help</mat-icon>
         <span> Información</span>
@@ -38,29 +39,30 @@
 
     <span class="spacer"></span>
 
-    <button mat-flat-button color="primary" routerLink="/store" (click)="onShop()"> <h2 style="margin: auto;">Shop</h2></button>
-   
+    <button mat-flat-button color="primary" routerLink="/store"
+      (click)="onShop()"> <h2 style="margin: auto;">Shop</h2></button>
+
     <div class="boton">
       <span class="example-spacer"></span>
       <button
         mat-icon-button
-        class="example-icon favorite-icon" [matMenuTriggerFor]="notificationsMenu">
+        class="example-icon favorite-icon"
+        [matMenuTriggerFor]="notificationsMenu">
         <mat-icon>perm_identity</mat-icon>
       </button>
-      <mat-menu #notificationsMenu="matMenu" >
+      <mat-menu #notificationsMenu="matMenu">
         <button mat-menu-item (click)="goToAuth('login')"> Ingresar </button>
         <button mat-menu-item (click)=" goToAuth('register')">Registro</button>
-       </mat-menu>
+      </mat-menu>
       <span class="fill-remaining-space"></span>
       <button
         mat-icon-button
         class="example-icon"
-        [matMenuTriggerFor]="notificationsMenu"
-      >
+        [matMenuTriggerFor]="notificationsMenu1">
         <mat-icon>notifications</mat-icon>
         <mat-badge matBadgeColor="warn" matBadge="5"></mat-badge>
       </button>
-      <mat-menu #notificationsMenu="matMenu">
+      <mat-menu #notificationsMenu1="matMenu">
         <button mat-menu-item>Notification 1</button>
         <button mat-menu-item>Notification 2</button>
         <button mat-menu-item>Notification 3</button>
@@ -68,22 +70,22 @@
 
       <span class="fill-remaining-space"></span>
 
-        <button mat-icon-button class="example-icon" (click)="goToCart()" (click)="onCartClick()">
+      <button mat-icon-button class="example-icon" (click)="goToCart()"
+        (click)="onCartClick()">
         <mat-icon>add_shopping_cart</mat-icon>
         <mat-badge matBadgeColor="warn" matBadge="3"></mat-badge>
       </button>
     </div>
   </mat-toolbar>
-
+  <!-- Entrutador y modulos home user -->
   <div class="container">
     <router-outlet></router-outlet>
-   <div  *ngIf="mostrarAppBody">
-      <app-body></app-body>  
+    <div *ngIf="mostrarAppBody">
+      <app-body></app-body>
     </div>
   </div>
   <div>
     <app-footer></app-footer>
   </div>
-  
-</mat-sidenav-container>
 
+</mat-sidenav-container>

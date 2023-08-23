@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MaterialModule } from '../material/material.module';
-import { BuscarComponent } from './pages/buscar/buscar.component';
 import { BodyComponent } from './pages/body/body.component';
 import { StoreRoutingModule } from './store-routing.module';
 import { HomeComponent } from './pages/home/home.component';
@@ -20,7 +19,7 @@ import { SharedModule } from '../shared/shared.module';
     HomeComponent,
     CartComponent,
     BodyComponent,
-    BuscarComponent,
+   
     ProductosComponent,
     
     ],
@@ -36,7 +35,6 @@ import { SharedModule } from '../shared/shared.module';
     HomeComponent,
     CartComponent,
     BodyComponent,
-    BuscarComponent,
     ProductosComponent,
   ]
 })

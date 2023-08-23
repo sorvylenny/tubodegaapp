@@ -44,20 +44,20 @@
 /* Estilos para dispositivos móviles */
 @media (max-width: 767px) {
   .container-registro {
-    justify-content: center; /* Centrar el contenido en dispositivos móviles */
+    justify-content: center; /* Centra el contenido en dispositivos móviles */
   }
   
   .container-botton {
-    margin-top: 10px; /* Ajustar el margen superior en dispositivos móviles */
+    margin-top: 10px; /* Ajusta el margen superior en dispositivos móviles */
   }
   
   .botton-register {
-    flex-direction: column; /* Cambiar a una disposición de columna */
-    align-items: center; /* Centrar elementos en columna */
+    flex-direction: column; /* Cambia a una disposición de columna */
+    align-items: center; /* Centra elementos en columna */
   }
   
   .botton-login {
-    padding: 1rem; /* Ajustar el padding en dispositivos móviles */
-    font-size: 0.9rem; /* Reducir el tamaño de fuente en dispositivos móviles */
+    padding: 1rem; /* Ajusta el padding en dispositivos móviles */
+    font-size: 0.9rem; /* Reduce el tamaño de fuente en dispositivos móviles */
   }
 }
