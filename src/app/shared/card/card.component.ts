@@ -14,11 +14,14 @@ export class CardComponent {
   @Input() imageUrl!: string;
   @Input() imageAlt!: string;
   @Input() content!: string;
-  @Input() buttonText!: string;
-
+  @Input() buttonText1!: string;
+  @Input() buttonText2!: string;
+  @Input() icon1!: string;
+  @Input() icon2!: string;
   @Input() products!: Product;
 
   @Input() user!: User; // Asumiendo que el tipo User representa los datos del usuario
+
 
 
   @Output() buttonAction: EventEmitter<void> = new EventEmitter(); // Acción del botón

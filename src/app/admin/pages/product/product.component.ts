@@ -131,6 +131,7 @@ export class ProductComponent implements OnInit {
   detailsId(event:any): void {
     // Aquí puedes usar el ID para navegar a la página de detalles
     this.router.navigate(['admin/detailsProduct', event]);
+    console.log(event);
   }
 }
 

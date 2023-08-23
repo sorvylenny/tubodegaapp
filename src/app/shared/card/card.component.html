@@ -10,9 +10,14 @@
       {{ content }}
     </mat-card-content>
     <mat-card-actions>
+      <div class="botton_Card">
       <button mat-flat-button color="primary" class="button"
         (click)="buttonAction.emit()">
-        <mat-icon>shopping_cart_checkout</mat-icon> {{ buttonText }} </button>
+        <mat-icon class="Icon">{{icon1}}</mat-icon> {{ buttonText1 }} </button>
+        <button  mat-flat-button color="primary" class="button"
+        (click)="buttonAction.emit()">
+        <mat-icon class="Icon">{{icon2}}</mat-icon> {{ buttonText2 }} </button>
+      </div>
     </mat-card-actions>
   </mat-card>
 </div>

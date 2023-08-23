@@ -88,4 +88,5 @@ export class ProductosComponent implements OnInit {
       this.productList = this.filteredProducts;
     }
   }
+  info_Product(){}
 }

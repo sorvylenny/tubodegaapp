@@ -35,7 +35,7 @@
 button {
   margin-top: 5px;
   margin-bottom: 5px;
-  width: 100%;
+  width: 40%;
   text-align: center;
 }
 
@@ -60,3 +60,12 @@ button {
   margin-bottom: 5px;
   text-align: justify;
 }
+
+.botton_Card{
+  display: flex;
+  justify-content:space-around;
+}
+.Icon{
+ width: 40px;
+}
+

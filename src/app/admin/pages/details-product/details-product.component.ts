@@ -9,13 +9,15 @@ import { Product } from 'src/app/store/interfaces/store.interface';
 })
 export class DetailsProductComponent implements OnInit {
   selectedProduct: Product = {
-    id: 1,
-    name: 'Azúcar Incauca light vitamina D3, bolsa 750g',
-    price: 7000,
-    description: 'Azúcar light con la mitad de calorías con Stevia y fortificado con Vitamina D3, que ayuda a fijar el calcio en los huesos.',
-    image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/185648-1600-1600?v=637813979704500000&width=1600&height=1600&aspect=true'
+    id: 0,
+    name: '',
+    price: 0,
+    description: '',
+    image: ''
 
   }; 
+  
+  showSecondButton = true; // Cambia esto según tus necesidades
 
  
   productos: Product[] = [];

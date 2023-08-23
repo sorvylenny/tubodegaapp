@@ -10,8 +10,12 @@
   [imageUrl]="product.image"
   imageAlt="Imagen del producto"
   [content]="product.description"
-  [buttonText]="'Agregar al carrito'" 
+  [icon1]="'shopping_cart_checkout'"
+  [buttonText1]="'Agregar al carrito'" 
   (buttonAction)="addToCart(product)"
+  [icon2]="'live_help'"
+  [buttonText2]="'Informacion'" 
+  (buttonAction)="info_Product()"
   >
 </app-card>
 </div>
