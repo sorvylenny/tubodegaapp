@@ -7,9 +7,9 @@ table {
   width: 100%;
 }
 
-img {
-  width: 50%;
-  height: 50%;
+.imagen {
+  width: 20%;
+  height: 20%;
   display: block;
   margin: 10px auto;
 }

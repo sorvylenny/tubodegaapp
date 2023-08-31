@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 
 @Component({
@@ -7,14 +9,18 @@ import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent {
+  @Input() items: any[] = [];
   @Input() dataSource: any;
   @Output() filterChanged = new EventEmitter<string>();
-  filterValue = '';
-
-  handleFilterChanged(filterValue: string) {
-/*     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase(); */
-    this.filterChanged.emit(filterValue);
+  @Input() searchControl = new FormControl();
+  @Input() filteredItems: any[] =[];
+ 
+  applyFilter() {
+    this.filterChanged.emit(this.searchControl.value);
   }
+  onOptionSelected(event: MatAutocompleteSelectedEvent) {
+    this.filterChanged.emit(event.option.value);
+  }
+
 
 }

@@ -7,3 +7,9 @@
     margin: 10px;
 }
 
+.paginador{
+    display: flex;
+    justify-content: center;
+    position: static;
+    width: 100%;
+}

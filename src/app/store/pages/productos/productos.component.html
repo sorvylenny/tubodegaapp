@@ -1,21 +1,39 @@
-<app-filter (filterChanged)="handleFilterChanged($event)"></app-filter>
+  
+<!-- <app-filter [searchControl]="filterValue" (filterChanged)="applyFilter($event)" [items]="producto" [filteredItems]="productList"></app-filter> -->
+<app-filter [items]="productList" (filterChanged)="handleFilterChanged($event)" [filteredItems]="productList"></app-filter>
 
+<!-- Mensaje cuando no se encuentra ningún producto -->
+<p *ngIf="filteredProducts.length === 0 && filterValue.value">
+  No se encontró ningún producto con el término '{{ filterValue.value }}'.
+</p>
 <!-- Aquí se mostrarán las tarjetas de los productos filtrados -->
 <h1 class="Text-Product">Productos</h1>
 <mat-divider></mat-divider>
 <div class="custom-grid-container">
-  <app-card *ngFor="let product of productList"
-  [title]="product.name.toString()"
-  [subtitle]="product.price.toString()"
-  [imageUrl]="product.image"
-  imageAlt="Imagen del producto"
-  [content]="product.description"
-  [icon1]="'shopping_cart_checkout'"
-  [buttonText1]="'Agregar al carrito'" 
-  (buttonAction)="addToCart(product)"
-  [icon2]="'live_help'"
-  [buttonText2]="'Informacion'" 
-  (buttonAction)="info_Product()"
+  <app-card
+    *ngFor="let product of productList"
+    [title]="product.title.toString()"
+    [subtitle]="product.price.toString()"
+    [imageUrl]="product.images.toString()"
+    imageAlt="Imagen del producto"
+    [content]="product.description"
+    [icon1]="'shopping_cart_checkout'"
+    [buttonText1]="'Agregar al carrito'"
+    (buttonAction)="addToCart(product)"
+    [icon2]="'live_help'"
+    [buttonText2]="'Informacion'"
+    (buttonAction)="info_Product()"
   >
-</app-card>
+  </app-card>
+  <div class="paginador">  
+    <mat-paginator
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [length]="length"
+    [showFirstLastButtons]="showFirstLastButtons"
+    (page)="handlePageEvent($event)"
+  >
+  </mat-paginator>
+</div>
+
 </div>

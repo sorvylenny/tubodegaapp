@@ -8,14 +8,7 @@ import { Product } from 'src/app/store/interfaces/store.interface';
   styleUrls: ['./details-product.component.css']
 })
 export class DetailsProductComponent implements OnInit {
-  selectedProduct: Product = {
-    id: 0,
-    name: '',
-    price: 0,
-    description: '',
-    image: ''
-
-  }; 
+  selectedProduct: Product | undefined ; 
   
   showSecondButton = true; // Cambia esto según tus necesidades
 
@@ -26,11 +19,11 @@ export class DetailsProductComponent implements OnInit {
   
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      const productId = Number(params.get('id')); // Convertir el parámetro 'id' a número (si es necesario)
+      const productId = params.get('id'); // Convertir el parámetro 'id' a número (si es necesario)
 
      // Verificar si 'productos' existe y no es nulo antes de buscar el producto por su ID
       if (this.productos && this.productos.length > 0) {
-      this.selectedProduct = this.productos.find((producto: { id: number; }) => producto.id === productId) || this.selectedProduct;
+      this.selectedProduct = this.productos.find(product => product.id === productId);
       }
     });
   

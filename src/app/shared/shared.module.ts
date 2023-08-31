@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardComponent } from './card/card.component';
-import { CurrencyPipe } from './pipe/currency.pipe';
-import { ChatDialogComponent } from './chat-dialog/chat-dialog.component';
-import { FilterComponent } from './filter/filter.component';
-import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
+import { CardComponent } from './card/card.component';
+import { ChatDialogComponent } from './chat-dialog/chat-dialog.component';
+import { CurrencyPipe } from './pipe/currency.pipe';
+import { FilterComponent } from './filter/filter.component';
+import { FooterComponent } from './footer/footer.component';
+import { FormUserComponent } from './form-user/form-user.component';
 import { MaterialModule } from '../material/material.module';
 import { PaymentComponent } from './payment/payment.component';
 import { TableComponent } from './table/table.component';
-import { FormUserComponent } from './form-user/form-user.component';
+import { ImageCellComponent } from './image-cell/image-cell.component';
 
 
 
@@ -18,11 +20,12 @@ import { FormUserComponent } from './form-user/form-user.component';
   declarations: [
     CardComponent,
     ChatDialogComponent,
+    FilterComponent,
     FooterComponent,
+    FormUserComponent,
     PaymentComponent,
     TableComponent,
-    FilterComponent,
-    FormUserComponent,
+    ImageCellComponent,
    
   ],
   imports: [
@@ -33,13 +36,14 @@ import { FormUserComponent } from './form-user/form-user.component';
   ], 
   exports:[
     CardComponent,
-    CurrencyPipe,
     ChatDialogComponent,
+    CurrencyPipe,
     FilterComponent,
     FooterComponent,
+    FormUserComponent,
     PaymentComponent,
     TableComponent, 
-    FormUserComponent
+    ImageCellComponent
  
   ]
 })

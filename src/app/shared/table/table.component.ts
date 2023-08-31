@@ -17,14 +17,11 @@ export class TableComponent implements OnInit, AfterViewInit  {
   displayedColumns: string[] = [];
   dataSource : any = [];
   tableColumns: TableColumns [] = [];
-  @Input() showButton!: boolean;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   clickedRows: any[] = [];
   @Output() detailsId = new EventEmitter<Product>();
-  selectedData: any;
-  selectedProduct: any;
- 
+
   
   @Input() set data(data: any) {
     this.dataSource = data;
@@ -38,6 +35,7 @@ export class TableComponent implements OnInit, AfterViewInit  {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    this.getTablaData();
   }
   ngAfterViewInit() {
     if (this.dataSource) {
@@ -53,17 +51,6 @@ export class TableComponent implements OnInit, AfterViewInit  {
     }, 0);
   }
 
-  /* onRowClick(product: Product) {
-    this.detailsId.emit(product);
- 
-    } */
-    /* onRowClick(row: any) {
-      // Aquí puedes realizar alguna acción al hacer clic en una fila
-      console.log('Row clicked:', row);
-      // También puedes almacenar la fila seleccionada en la variable clickedRows si lo deseas
-      this.clickedRows.push(row);
-    } */
-
      onRowClick(id: number | any) {
       this.detailsId.emit(id);
   
@@ -74,6 +61,7 @@ export class TableComponent implements OnInit, AfterViewInit  {
       }
       console.log(clickedRow)
     }
+ 
   }
   
 

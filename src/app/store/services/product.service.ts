@@ -1,30 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../interfaces/store.interface';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  products: Product[] = [
-    { id: 1, name: 'Producto 1', price: 100, description: 'Descripción del producto 1', image: 'https://via.placeholder.com/150' },
-    { id: 2, name: 'Producto 2', price: 200, description: 'Descripción del producto 2', image: 'https://via.placeholder.com/150' },
-    { id: 3, name: 'Producto 3', price: 300, description: 'Descripción del producto 3', image: 'https://via.placeholder.com/150' },
-    { id: 4, name: 'Producto 4', price: 400, description: 'Descripción del producto 4', image: 'https://via.placeholder.com/150' }
-  ];
 
-  constructor() { }
+  private baseUrl: string = environment.baseUrl;
 
-  getProducts(): Product[] {
-    return this.products;
+  constructor( private http: HttpClient ) { }
+
+  /* getProducts(): Observable <Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrl}/products`);
+  } */
+
+  getProductById( id: string): Observable <Product>{
+    return this.http.get<Product>(`${this.baseUrl}/products ${id}`);
+  } 
+
+  getSuggestions( query: string ): Observable<Product[]> {
+    return this.http.get<Product[]>(`${ this.baseUrl }/products/${ query }`);
   }
 
-  searchProducts(term: string): Product[] {
-    if (!term.trim()) {
-      return this.products;
-    }
-    return this.products.filter(product =>
-      product.name.toLowerCase().includes(term.toLowerCase())
-    );
+  getProducts(page: number, pageSize: number): Observable<Product[]> {
+    const url = `${this.baseUrl}/products?limit=${page}&offset=${pageSize}`
+    console.log(url)
+    return this.http.get<Product[]>(url);
+    
+  }
+
 
 }
-}
+
+

@@ -7,52 +7,52 @@ import { CurrencyFormatPipe } from 'src/app/shared/pipe/currency.pipe';
 
 const productos: Product[] = [
   {
-    id: 1,
-    name: 'Azúcar Incauca light vitamina D3, bolsa 750g',
+    id: '1',
+    title: 'Azúcar Incauca light vitamina D3, bolsa 750g',
     price: 7000,
     description: 'Azúcar light con la mitad de calorías con Stevia y fortificado con Vitamina D3, que ayuda a fijar el calcio en los huesos.',
-    image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/185648-1600-1600?v=637813979704500000&width=1600&height=1600&aspect=true'
+    images: ['']
 
   },
   {
-    id: 2,
-    name: 'Sal Refisal bolsa 3000kg',
+    id: '2',
+    title: 'Sal Refisal bolsa 3000kg',
     price: 5000,
     description: 'Sal Refisal es la sal que no puede faltar en la cocina y en la mesa.',
-    image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/192055-800-800?v=637814017441900000&width=800&height=800&aspect=true'
+    images: ['']
   },
   {
-    id: 3,
-    name: 'Mantequilla Colanta sin sal x125g',
+    id: '3',
+    title: 'Mantequilla Colanta sin sal x125g',
     price: 5000,
     description: 'Una mantequilla suave y deliciosa para esparcir sobre tus comidas preferidas o para ser parte de preparaciones como tortas, galletas y más.',
-    image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/192971-800-800?v=637814023150330000&width=800&height=800&aspect=true'
+    images: ['']
   },
   {
-    id: 4,
-    name: 'Arroz Diana blanco x1kg',
+    id: '4',
+    title: 'Arroz Diana blanco x1kg',
     price: 4590,
     description: 'Proporciónale todo el amor a tu familia con el delicioso Arroz Diana.',
-    image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/186299-1600-1600?v=637813981775570000&width=1600&height=1600&aspect=true'
+    images: ['']
   },
   {
-    id: 5,
-    name: 'Crema Dental Colgate Triple Acción x3und x75ml c/u',
+    id: '5',
+    title: 'Crema Dental Colgate Triple Acción x3und x75ml c/u',
     price: 19790,
     description: 'Triple beneficio, protección, blancura y frescura.',
-    image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/360135-800-800?v=637858855860470000&width=800&height=800&aspect=true'
+    images: ['']
   },
   {
-    id: 6,
-    name: 'Pasta Clásica Spaghetti Doria x 250 g',
+    id: '6',
+    title: 'Pasta Clásica Spaghetti Doria x 250 g',
     price: 2000,
     description: 'El Spaghetti es una pasta larga con múltiples y fáciles formas de preparación; perfecta para acompañar con salsas, carnes y verduras.',
-    image: 'https://jumbocolombiaio.vtexassets.com/arquivos/ids/186130-800-800?v=637813981192900000&width=800&height=800&aspect=true'
+    images:['']
   },
 
 ];
 
-
+//Todo: hacer la coneccion de product al servicio//
 
 @Component({
   selector: 'app-product',
@@ -70,11 +70,11 @@ export class ProductComponent implements OnInit {
   displayedColumns: string[] = []; // Declaración vacía inicialmente
   clickedRows: Product[] = [];
   selectedProduct: Product = {
-    id: 0,
-    name:'',
+    id: '',
+    title:'',
     price: 0,
     description: '',
-    image: ''
+    images: ['']
   }; 
   paginator: any;
 
@@ -92,8 +92,8 @@ export class ProductComponent implements OnInit {
     this.filterValue = filterValue;
     if (this.Product) {
       this.filteredProducts = this.Product.filter((item: any) => {
-        // Replace 'name' with the property you want to filter on
-        return item.name.toLowerCase().includes(this.filterValue.toLowerCase());
+        // Replace 'title' with the property you want to filter on
+        return item.title.toLowerCase().includes(this.filterValue.toLowerCase());
       });
     
       this.productList = this.filteredProducts;
@@ -119,10 +119,10 @@ export class ProductComponent implements OnInit {
   setTableColumns() {
     this.tableColumns = [
       { ColumnDef: 'id', HeaderCellDef: 'Id', dataKey: 'id' },
-      { ColumnDef: 'name', HeaderCellDef: 'Name', dataKey: 'name' },
+      { ColumnDef: 'title', HeaderCellDef: 'title', dataKey: 'title' },
       { ColumnDef: 'price', HeaderCellDef: 'Price',dataKey: 'price',  pipe: new CurrencyFormatPipe('es-CO') },
       { ColumnDef: 'description', HeaderCellDef: 'Description', dataKey: 'description' },
-      { ColumnDef: 'image', HeaderCellDef: 'Image', dataKey: 'image', altText : '' },
+      { ColumnDef: 'images', HeaderCellDef: 'images', dataKey: 'images', altText : '' },
           
     ];
     this.displayedColumns = this.tableColumns.map(column => column.ColumnDef);
@@ -141,8 +141,8 @@ export class ProductComponent implements OnInit {
     this.filterValue = filterValue;
     if (this.Product) {
       this.filteredProducts = this.Product.filter((item: any) => {
-        // Replace 'name' with the property you want to filter on
-        return item.name.toLowerCase().includes(this.filterValue.toLowerCase());
+        // Replace 'title' with the property you want to filter on
+        return item.title.toLowerCase().includes(this.filterValue.toLowerCase());
       });
       console.log(this.filteredProducts);
       this.dataSource = new MatTableDataSource(this.filteredProducts);

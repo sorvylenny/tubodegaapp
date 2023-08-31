@@ -1,10 +1,22 @@
 
 
 <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput  [(ngModel)]="filterValue"  (input)="handleFilterChanged(filterValue)">
-  </mat-form-field>
-  
-<!--   <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" [attr.colspan]="tableColumns.length"> No data matching the filter "{{input.value}}"</td>
-  </tr> -->
+  <mat-label>Filter</mat-label>
+  <input  
+        type="text"
+        matInput
+        [formControl]="searchControl"
+        (input)="applyFilter()"
+        [matAutocomplete]="auto">
+
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+      <mat-option *ngFor="let item of filteredItems" [value]="item.title">
+        {{ item.title }}
+      </mat-option>
+    
+      <mat-option *ngIf="filteredItems.length === 0 && searchControl.value && searchControl.value.length > 0" value="">
+        No se encontró nada con el término {{ searchControl.value }}
+      </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+

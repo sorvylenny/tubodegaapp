@@ -3,9 +3,9 @@
 <div *ngIf="selectedProduct">
     <!-- <app-card [products]="selectedProduct"></app-card> -->
     <app-card
-  [title]="selectedProduct.name.toString()"
+  [title]="selectedProduct.title.toString()"
   [subtitle]="selectedProduct.price.toString()"
-  [imageUrl]="selectedProduct.image"
+  [imageUrl]="selectedProduct.images.toString()"
   imageAlt="Imagen del producto"
   [content]="selectedProduct.description"
   [buttonText1]="'Regresar'"

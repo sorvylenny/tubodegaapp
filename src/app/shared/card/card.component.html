@@ -1,6 +1,6 @@
 
 <div class="card-container">
-  <mat-card>
+  <mat-card *ngFor="let imageUrl of getImageUrlsArray()">
     <mat-card-header>
       <mat-card-title class="title">{{ title }}</mat-card-title>
       <mat-card-subtitle class="price">{{ subtitle | currency }}</mat-card-subtitle>

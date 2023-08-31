@@ -1,0 +1,11 @@
+.imagen {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .imagen img {
+    font-size: 16px; /* Tamaño base para las imágenes */
+    max-width: 0.5em; /* Cambia este valor según tus necesidades */
+    max-height: 0.5em; /* Cambia este valor según tus necesidades */
+  }
+  
