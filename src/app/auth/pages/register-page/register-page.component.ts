@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-register-page',
@@ -23,7 +24,8 @@ export class RegisterPageComponent implements OnInit {
   formTitle = 'Registro de Usuario'; // Título del formulario
 
   constructor(private formBuilder: FormBuilder,
-              private router: Router){}
+              private router: Router,
+              private authService: AuthService){}
 
 
 
@@ -40,11 +42,25 @@ export class RegisterPageComponent implements OnInit {
       confirmPassword : ['', Validators.required],
       address: ['', Validators.required],
       phone:  ['', Validators.required],
-    });
+    }); 
    }
 
    regresar(){
     this.router.navigate(['./store']);
    }
-
+   enviar() {
+    if (this.formUser.valid) {
+      const userData = this.formUser.value;
+      // Llama al servicio para registrar al usuario
+      this.authService.registerUser(userData).subscribe(
+        (response) => {
+          // Todo: hacer el Manejo la respuesta del servidor, por ejemplo, redirecciona al usuario a una página de éxito.
+        },
+        (error) => {
+          //Todo: hacer Manejo los errores, por ejemplo, muestra un mensaje de error al usuario.
+        }
+      );
+    }
+  }
+  
 }

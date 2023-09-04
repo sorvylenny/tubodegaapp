@@ -24,7 +24,7 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     SharedModule,
     MaterialModule, 
-    StoreModule
+    StoreModule, 
   ],
   exports: [
     LayoutPageComponent,

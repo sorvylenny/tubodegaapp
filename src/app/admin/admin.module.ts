@@ -7,7 +7,7 @@ import { AuthModule } from '../auth/auth.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './pages/product/product.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
-import { UsersModule } from './users/users.module';
+
 import { NewUsersComponent } from './pages/new-users/new-users.component';
 import { DetailsUserComponent } from './pages/details-user/details-user.component';
 import { DetailsProductComponent } from './pages/details-product/details-product.component';
@@ -31,7 +31,8 @@ import { NewProductComponent } from './pages/new-product/new-product.component';
     AuthModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    StoreModule
   ]
 })
 export class AdminModule { }

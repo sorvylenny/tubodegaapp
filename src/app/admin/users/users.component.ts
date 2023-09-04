@@ -23,19 +23,19 @@ export class UsersComponent implements OnInit {
   constructor(private router: Router, private userService: UsersService) {}
 
   ngOnInit(): void {
-    this.user = this.getAllUsers(); //  lista de usuarios
+ /*    this.user = this.getAllUsers(); //  lista de usuarios
     this.setTableColumns(); // Configuración las columnas de la tabla
     this.filteredUser = this.user; // Inicializa, los usuarios filtrados serán todos los usuarios
-    this.dataSource = this.filteredUser; // Configuración el origen de datos para la tabla
+    this.dataSource = this.filteredUser; // Configuración el origen de datos para la tabla */
    
   }
-  getAllUsers(): User[] {
+ /*  getAllUsers(): User[] {
     return this.userService.getAll();
   }
 
   getUserById(id: number): User | undefined {
     return this.userService.getById(id);
-  }
+  } */
 
   setTableColumns(){
     this.tableColumns = [
@@ -48,13 +48,13 @@ export class UsersComponent implements OnInit {
   }
 
   handleFilterChanged(filterValue: string) {
-    this.filterValue = filterValue;
+ /*    this.filterValue = filterValue;
     if (this.user) {
       this.filteredUser = this.user.filter((item: User) => {
         return item.name.toLowerCase().includes(this.filterValue.toLowerCase());
       });
       this.dataSource = this.filteredUser; // Actualiza el origen de datos para la tabla
-    }
+    } */
   }
 
  /*  detailsId(id: number): void {

@@ -13,6 +13,7 @@ export class FormUserComponent {
   @Input() fields!: any[]; // Datos de los campos (nombres y etiquetas)
   @Input() formTitle: string | undefined; // Título del formulario
   @Output() regresarClicked = new EventEmitter<void>(); // Evento para el botón Regresar
+  @Output() enviarClicked = new EventEmitter<void>(); // Evento para el botón Regresar
   @Input() showRolesSelector: boolean = true;
 
   
@@ -20,6 +21,10 @@ export class FormUserComponent {
   constructor() { }
 
   regresar() {
+    this.regresarClicked.emit();
+  }
+
+  enviar() {
     this.regresarClicked.emit();
   }
 }

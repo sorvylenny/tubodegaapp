@@ -6,7 +6,7 @@ import { User } from '../interface/user';
 })
 export class UsersService {
 
-  users_List: User[] = [
+/*   users_List: User[] = [
     {id: 1, name: 'Pedro', correo: 'test1@prueba.com', rol: 'admin'},
     {id: 2, name: 'Helen',   correo: 'test2@prueba.com', rol: 'user'},
     {id: 3, name: 'Lidia',  correo: 'test3@prueba.com', rol: 'admin'},
@@ -17,10 +17,10 @@ export class UsersService {
     {id: 8, name: 'Oxangel',   correo: 'test8@prueba.com', rol: 'user'},
     {id: 9, name: 'Fiorella', correo: 'test9@prueba.com', rol: 'user'},
     {id: 10, name: 'Nerio',    correo: 'test10@prueba.com', rol: 'user'},
-  ];
+  ]; */
 
   constructor() { }
-
+/* 
   getAll(): User[]{
     return this.users_List;
   }
@@ -39,5 +39,5 @@ export class UsersService {
   }
   delete(id: number): void {
     this.users_List = this.users_List.filter(user => user.id !== id);
-  }
+  } */
 }

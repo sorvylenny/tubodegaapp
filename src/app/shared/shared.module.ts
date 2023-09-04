@@ -13,6 +13,7 @@ import { MaterialModule } from '../material/material.module';
 import { PaymentComponent } from './payment/payment.component';
 import { TableComponent } from './table/table.component';
 import { ImageCellComponent } from './image-cell/image-cell.component';
+import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
 
 
 
@@ -26,6 +27,7 @@ import { ImageCellComponent } from './image-cell/image-cell.component';
     PaymentComponent,
     TableComponent,
     ImageCellComponent,
+    ProgressSpinnerComponent,
    
   ],
   imports: [
