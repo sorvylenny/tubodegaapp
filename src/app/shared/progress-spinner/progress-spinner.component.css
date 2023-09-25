@@ -1,0 +1,11 @@
+  
+  .example-section {
+    display: flex;
+    justify-content: center;
+    height: auto;
+  }
+
+.spinner{
+    margin: 10px;
+
+}

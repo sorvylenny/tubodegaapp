@@ -45,7 +45,8 @@ import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.co
     FormUserComponent,
     PaymentComponent,
     TableComponent, 
-    ImageCellComponent
+    ImageCellComponent,
+    ProgressSpinnerComponent,
  
   ]
 })

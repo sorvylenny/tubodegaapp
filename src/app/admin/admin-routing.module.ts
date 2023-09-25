@@ -9,6 +9,7 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { DetailsUserComponent } from './pages/details-user/details-user.component';
 import { DetailsProductComponent } from './pages/details-product/details-product.component';
 import { NewProductComponent } from './pages/new-product/new-product.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 
 
@@ -19,6 +20,10 @@ const routes: Routes = [
     path: '',
     component: HomeAdminComponent,
     children:[
+      {
+        path:'home',
+        component: HomePageComponent,
+      },
       {
         path:'user',
         component: UsersComponent,
@@ -43,6 +48,10 @@ const routes: Routes = [
         path:'newProduct',
         component: NewProductComponent,
       },
+      {
+        path: '**',
+        redirectTo: 'home' 
+      }
     ],
   },
 

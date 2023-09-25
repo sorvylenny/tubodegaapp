@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interface/user';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
+  private baseUrl: string = environment.baseUrl;
 
 /*   users_List: User[] = [
     {id: 1, name: 'Pedro', correo: 'test1@prueba.com', rol: 'admin'},
@@ -19,15 +23,17 @@ export class UsersService {
     {id: 10, name: 'Nerio',    correo: 'test10@prueba.com', rol: 'user'},
   ]; */
 
-  constructor() { }
-/* 
-  getAll(): User[]{
-    return this.users_List;
+  constructor(private http: HttpClient) { }
+
+  getAll(user: User): Observable<User> {
+    const url = `${this.baseUrl}/users/user`; 
+    return this.http.post<User>(url, user);
   }
-  getById(id: number): User | undefined {
-    return this.users_List.find(user => user.id === id);
+  getById(id: number):Observable<User>{
+    const url = `${this.baseUrl}/users/update-details/ ${id}`;
+    return this.http.patch<User>(url, {});
   }
-  new(newUser: User): void {
+ /*  new(newUser: User): void {
     this.users_List.push(newUser);
   }
 

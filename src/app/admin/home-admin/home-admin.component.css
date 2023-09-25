@@ -55,3 +55,8 @@
     width:100%;
   }
 }
+.Admin{
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}

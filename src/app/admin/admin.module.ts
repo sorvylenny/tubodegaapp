@@ -13,6 +13,7 @@ import { DetailsUserComponent } from './pages/details-user/details-user.componen
 import { DetailsProductComponent } from './pages/details-product/details-product.component';
 import { SharedModule } from '../shared/shared.module';
 import { NewProductComponent } from './pages/new-product/new-product.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { NewProductComponent } from './pages/new-product/new-product.component';
     DetailsUserComponent,
     DetailsProductComponent,
     NewProductComponent,
+    HomePageComponent,
  ],
   imports: [
     CommonModule,

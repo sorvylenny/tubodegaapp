@@ -47,7 +47,7 @@
 
     <span class="spacer"></span>
 
-    <span>Admin</span>
+    <a routerLink="./home" class="Admin"> <span>Admin</span></a>
     <div class="boton">
       <button mat-icon-button d-flex (click)="logout()">
         <mat-icon>logout</mat-icon>
@@ -59,7 +59,7 @@
   <div class="container">
     <router-outlet></router-outlet>
     <div *ngIf="mostrarAppBody">
-      <app-product></app-product>
+      <app-home-page></app-home-page> 
     </div>
   </div>
   <div class="footer-Admin"><app-footer></app-footer></div>

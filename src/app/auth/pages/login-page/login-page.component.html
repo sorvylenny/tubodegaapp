@@ -35,7 +35,7 @@
         </div>
 
         <!-- Email input -->
-        <form [formGroup]="loginForm" class="d-flex flex-column ">
+        <form [formGroup]="loginForm" class="d-flex flex-column " autocomplete="off" (ngSubmit)="login()">
           <div class="d-flex flex-column form-login">
             <mat-form-field>
               <mat-label>Correo</mat-label>
@@ -51,7 +51,7 @@
             <mat-form-field>
               <mat-label>Contraseña</mat-label>
               <input matInput [type]="'password'" formControlName="password">
-              <mat-error *ngIf="!loginForm.controls['password']?.valid">Contraseña
+              <mat-error *ngIf="loginForm.controls['password']?.valid">Contraseña
                 es requerido.</mat-error>
             </mat-form-field>
 
@@ -63,7 +63,7 @@
             </div>
 
             <div class="text-center text-lg-start mt-4 pt-2 container-botton">
-              <button mat-fab extended class="botton-login" color="primary" (click)="submit()">Login</button>
+              <button mat-fab extended class="botton-login" color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
               <p class="small fw-bold mt-2 pt-1 mb-0 p-registro">No tienes una
                 cuenta? <a href="./auth/registro"
                   class="link-danger">Registrame</a></p>

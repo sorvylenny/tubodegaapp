@@ -1,0 +1,41 @@
+.Hola{
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    place-items: center;
+    height:50vh;
+    text-align: center;
+  
+  }
+  .animate{
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 2rem;
+      margin: auto;
+      border-right: 0.15em solid transparent;
+      animation: typing 7s steps(38) 1s 1 normal both, blink 1s steps(1) infinite;  
+  }
+  @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+    @keyframes blink {
+      20% {
+        border-color: transparent;
+      }
+   }
+   @media (max-width: 767px) {
+      .Hola {
+        font-size: 1.5rem; 
+      }
+    
+      .animate {
+        font-size: 1rem;
+        width: 100%;
+      }
+   }
