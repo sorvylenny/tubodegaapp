@@ -21,6 +21,7 @@ export class CardComponent {
   @Input() products!: Product;
 
   @Input() user!: User; // Asumiendo que el tipo User representa los datos del usuario
+  
   getImageUrlsArray(): string[] {
     return this.imageUrl.split(',');
   }
