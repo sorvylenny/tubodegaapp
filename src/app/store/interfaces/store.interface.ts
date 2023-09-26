@@ -9,7 +9,7 @@ export interface Product {
   sizes?:       Size[];
   gender?:      Gender;
   tags?:        Tag[];
-  images:      string[];
+  images:      string;
 }
 
 export enum Gender {

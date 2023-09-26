@@ -9,6 +9,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { StoreModule } from '../store/store.module';
 import { SharedModule } from '../shared/shared.module';
+import { UsersModule } from '../admin/users/users.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     MaterialModule, 
     StoreModule, 
+    UsersModule,
   ],
   exports: [
     LayoutPageComponent,

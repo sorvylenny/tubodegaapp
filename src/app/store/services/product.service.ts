@@ -18,7 +18,7 @@ export class ProductService {
   } */
 
   getProductById( id: string): Observable <Product>{
-    return this.http.get<Product>(`${this.baseUrl}/products ${id}`);
+    return this.http.get<Product>(`${this.baseUrl}/products/ ${id}`);
   } 
 
   getSuggestions( query: string ): Observable<Product[]> {
@@ -26,8 +26,7 @@ export class ProductService {
   }
 
   getProducts(page: number, pageSize: number): Observable<Product[]> {
-    const url = `${this.baseUrl}/products?limit=${page}&offset=${pageSize}`
-    console.log(url)
+    const url = `${this.baseUrl}/products?limit=${page}&offset=${pageSize}`;
     return this.http.get<Product[]>(url);
     
   }

@@ -15,7 +15,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     MaterialModule, 
-    SharedModule
+    SharedModule,
+    
   ]
 })
 export class UsersModule { }

@@ -14,6 +14,7 @@ import { DetailsProductComponent } from './pages/details-product/details-product
 import { SharedModule } from '../shared/shared.module';
 import { NewProductComponent } from './pages/new-product/new-product.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { UsersModule } from './users/users.module';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    StoreModule
+    StoreModule,
+    UsersModule
   ]
 })
 export class AdminModule { }
