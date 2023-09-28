@@ -37,6 +37,7 @@ button {
   margin-bottom: 5px;
   width: 40%;
   text-align: center;
+  cursor: pointer;
 }
 
 .price {
@@ -64,6 +65,8 @@ button {
 .botton_Card{
   display: flex;
   justify-content:space-around;
+  margin-top: 10px;
+  align-items: center;
 }
 .Icon{
  width: 40px;

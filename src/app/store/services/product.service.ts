@@ -22,13 +22,19 @@ export class ProductService {
   } 
 
   getSuggestions( query: string ): Observable<Product[]> {
-    return this.http.get<Product[]>(`${ this.baseUrl }/products/${ query }`);
+    return this.http.get<Product[]>(`${ this.baseUrl }/products/${query}`);
   }
 
   getProducts(page: number, pageSize: number): Observable<Product[]> {
     const url = `${this.baseUrl}/products?limit=${page}&offset=${pageSize}`;
     return this.http.get<Product[]>(url);
     
+  }
+  getDelete(id: string): Observable<any>{
+    return this.http.delete<any>(`${ this.baseUrl }/products/${id}`)
+  }
+  getEdit(product:Product): Observable<Product>{
+    return  this.http.put<Product> (`${ this.baseUrl }/products`, product)
   }
 
 

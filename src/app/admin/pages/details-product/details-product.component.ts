@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ChatDialogComponent } from 'src/app/shared/chat-dialog/chat-dialog.component';
 import { Product } from 'src/app/store/interfaces/store.interface';
 import { ProductService } from 'src/app/store/services/product.service';
 
@@ -14,7 +16,7 @@ export class DetailsProductComponent implements OnInit {
   productos: Product[] = [];
   id: string = '';
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService, private dialog: MatDialog,  private router: Router) { }
   
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -39,10 +41,24 @@ export class DetailsProductComponent implements OnInit {
  
   }
 
-  regresar(){
+  Edit(){
 
   }
-  ingresar(){
-
+  Delete(){
+    const dialog = this.dialog.open(ChatDialogComponent, {
+      width:'250px',
+      data: {message: '¿Seguro de que deseas Eliminar el producto?'}
+      });
+      dialog.afterClosed().subscribe(
+         (result)=> {
+           if(result) {
+             this.productService.getDelete(this.id!)
+                .subscribe( product => {
+                  this.router.navigate(['/product']);
+                });
+            }
+         }
+      
+       ) 
+    }
   }
-}

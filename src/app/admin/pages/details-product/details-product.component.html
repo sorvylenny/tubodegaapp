@@ -8,8 +8,12 @@
   [imageUrl]="selectedProduct.images.toString()"
   imageAlt="Imagen del producto"
   [content]="selectedProduct.description"
-  [buttonText1]="'Regresar'"
-  (buttonAction)="regresar()"
+  [icon1]="'edit'"
+  [buttonText1]="'Modificar'"
+  (buttonAction)="Edit()"
+  [icon2]="'delete'"
+  [buttonText2]="'Eliminar'"
+  (buttonAction)="Delete()"
   ></app-card>
 
   </div>
