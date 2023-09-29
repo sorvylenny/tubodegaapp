@@ -12,14 +12,19 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(user: User): Observable<User> {
+  getAll(): Observable<User[]> {
     const url = `${this.baseUrl}/users/users`; 
-    return this.http.post<User>(url, user);
+    console.log(url);
+    return this.http.get<User[]>(url);
   }
   getById(id: number):Observable<User>{
     const url = `${this.baseUrl}/users/update-details/ ${id}`;
     return this.http.patch<User>(url, {});
   }
+
+  /* getSeach( query: string ): Observable<User[]> {
+    return this.http.get<User[]>(`${ this.baseUrl }/users/${query}`);
+  } */
  /*  new(newUser: User): void {
     this.users_List.push(newUser);
   }

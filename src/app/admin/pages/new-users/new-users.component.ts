@@ -18,6 +18,7 @@ export class NewUsersComponent {
 
   roles: Rols[] = [
     {value: 'admin-0', viewValue: 'Admin'},
+    {value: 'super', viewValue: 'SuperUser'},
     {value: 'user-1', viewValue: 'User'},
   ];
 

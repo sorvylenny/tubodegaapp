@@ -42,9 +42,38 @@ export class DetailsProductComponent implements OnInit {
   }
 
   Edit(){
+    if (!this.id) {
+      console.error('El id es nulo o indefinido.');
+      return;
+    }
+  
+    console.log('ID a eliminar:', this.id);
+    
+    const dialog = this.dialog.open(ChatDialogComponent, {
+      width:'250px',
+      data: {message: '¿Seguro de que deseas Editar o actualizar este producto?'}
+      });
+      dialog.afterClosed().subscribe(
+         (result)=> {
+           if(this.selectedProduct) {
+             this.productService.getEdit(this.selectedProduct)
+                .subscribe( product => {
+                  this.router.navigate(['/newProduct']);
+                });
+            }
+         }
+      
+       )
 
   }
-  Delete(){
+  onDeleteButtonClick(){
+    if (!this.id) {
+      console.error('El id es nulo o indefinido.');
+      return;
+    }
+  
+    console.log('ID a eliminar:', this.id);
+
     const dialog = this.dialog.open(ChatDialogComponent, {
       width:'250px',
       data: {message: '¿Seguro de que deseas Eliminar el producto?'}

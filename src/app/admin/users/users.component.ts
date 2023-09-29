@@ -29,13 +29,16 @@ export class UsersComponent implements OnInit {
     this.dataSource = this.filteredUser; // Configuración el origen de datos para la tabla */
    
   }
- /*  getAllUsers(): User[] {
-    return this.userService.getAll();
+   allUsers(): void {
+     this.userService.getAll().subscribe((result: User[])=>{
+      this.dataSource= result; 
+      console.log(this.dataSource);
+     });
   }
 
-  getUserById(id: number): User | undefined {
+ /*  getUserById(id: number): User | undefined {
     return this.userService.getById(id);
-  } */
+  }  */
 
   setTableColumns(){
     this.tableColumns = [
@@ -47,27 +50,8 @@ export class UsersComponent implements OnInit {
     ]
   }
 
-  handleFilterChanged(filterValue: string) {
- /*    this.filterValue = filterValue;
-    if (this.user) {
-      this.filteredUser = this.user.filter((item: User) => {
-        return item.name.toLowerCase().includes(this.filterValue.toLowerCase());
-      });
-      this.dataSource = this.filteredUser; // Actualiza el origen de datos para la tabla
-    } */
-  }
+  handleFilterChanged(filterValue: string) {}
 
- /*  detailsId(id: number): void {
-    const user = this.getUserById(id); // Obtén el usuario por ID
-    if (user) {
-      // Si se encontró el usuario, navega a la página de detalles
-      this.router.navigate(['admin/detailsUser', id]);
-    } else {
-      // Si no se encontró el usuario, podrías mostrar un mensaje de error o tomar otra acción
-      console.error('User not found'); // Por ejemplo, imprimir un mensaje de error en la consola
-    }
-  } */
-  
   detailsId(event:any): void {
     // Aquí puedes usar el ID para navegar a la página de detalles
     this.router.navigate(['admin/detailsUser', event]);

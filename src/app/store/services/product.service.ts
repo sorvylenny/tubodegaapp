@@ -34,7 +34,7 @@ export class ProductService {
     return this.http.delete<any>(`${ this.baseUrl }/products/${id}`)
   }
   getEdit(product:Product): Observable<Product>{
-    return  this.http.put<Product> (`${ this.baseUrl }/products`, product)
+    return  this.http.patch<Product> (`${ this.baseUrl }/products`,product)
   }
 
 
