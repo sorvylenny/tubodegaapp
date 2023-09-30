@@ -13,8 +13,8 @@ export interface User {
 }
 
 export enum Roles {
-    admin =     "Admin",
-    superUser = "SuperUser",
-    user =      "User",
+  admin = 'admin',
+  superUser = 'super-user',
+  user = 'user',
 }
 

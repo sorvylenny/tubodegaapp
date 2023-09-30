@@ -11,12 +11,12 @@ import { Router } from '@angular/router';
 export class AuthService {
   private baseUrl: string = environment.baseUrl;
   private _user!: User;
-  
+
   get user(){
     return{...this._user}
   }
 
-  
+
 
   constructor(private http: HttpClient,  private router: Router) { }
 
@@ -44,7 +44,7 @@ private getCurrentUserFromLocalStorage(): Observable<User | null> {
 
 
   registerUser(UserData:User): Observable<boolean>{
-    const url = `${this.baseUrl}/auth//register`;
+    const url = `${this.baseUrl}/auth/register`;
     const body = UserData;
     return this.http.post<User>(url, body)
     .pipe(
@@ -59,32 +59,33 @@ private getCurrentUserFromLocalStorage(): Observable<User | null> {
 }
 
 login(user: User): Observable<boolean> {
-  const url = `${this.baseUrl}/auth`;
+  const url = `${this.baseUrl}/auth/login`;
   const body = user;
 
-  // Realizar la solicitud HTTP POST y manejar la respuesta
-  return this.http.post<User>(url, body).pipe(
-    map((resp: any) => {
-      // Verifica si la respuesta es exitosa (ok) y tiene roles
-      if (resp && resp.ok && resp.roles) {
-        localStorage.setItem('token', resp.token!);
+ // Realizar la solicitud HTTP POST y manejar la respuesta
+ return this.http.post<User>(url, body).pipe(
+
+   map((resp: any) => {
+     // Verifica si la respuesta es exitosa (ok) y tiene roles
+     if (resp ) {
+       localStorage.setItem('token', resp.token!);
 
         // Redirige según el rol
-        if (resp.roles.includes(Roles.admin)) {
+        if (resp.roles = Roles.admin) {
           this.router.navigate(['admin']);
-        } else if (resp.roles.includes(Roles.user)) {
+        } else if (resp.roles = Roles.user) {
           this.router.navigate(['home']);
         }
 
         return true;  // Autenticación exitosa
       }
 
+      catchError(err => {
+        console.error('Error during login:', err);
+        return of(false);  // Autenticación fallida por error
+      })
       return false;  // Autenticación fallida
     }),
-    catchError(err => {
-      console.error('Error during login:', err);
-      return of(false);  // Autenticación fallida por error
-    })
   );
 }
 

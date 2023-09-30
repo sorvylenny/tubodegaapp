@@ -9,23 +9,23 @@ import { User } from 'src/app/admin/interface/user';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls:  ['./login-page.component.css']
+  styleUrls: ['./login-page.component.css']
 })
 
 export class LoginPageComponent implements OnInit {
   loginForm: FormGroup = this.fb.group({
-    email:  ['test1@prueba.com', [Validators.required, Validators.email]],
-    password: ['1234567', [Validators.required, Validators.minLength(7)]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(0)]],
     remember: [false],
-   });
+  });
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService ){}
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   login(): void {
     if (this.loginForm.invalid) {
-     
+
       return;
     }
 
@@ -34,22 +34,17 @@ export class LoginPageComponent implements OnInit {
     const user: User = { email, password };
 
     this.authService.login(user).subscribe(
-      success => {
-        if (success) {
-          // todo: La autenticación fue exitosa
-          console.log('Autenticación exitosa');
-        } else {
-          // todo: La autenticación falló
-          console.log('Autenticación fallida');
-        }
+      (response) => {
+        if (response) {
+          this.authService.login(user);
+         /*  console.log('Autenticación exitosa');
+          console.log(response); */ // Puedes mostrar información adicional aquí
+        } 
       },
-      error => {
-        console.error('Error durante el inicio de sesión:', error);
-        // todo: Manejar errores de autenticación
+      (error) => {
+        // Manejar errores de la solicitud de inicio de sesión
+        console.error('Error en el inicio de sesión', error);
       }
     );
   }
-  
-  
-  
-  }
+}

@@ -13,9 +13,11 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<User[]> {
-    const url = `${this.baseUrl}/users/users`; 
+    const url = `${this.baseUrl}/users/users`;
     console.log(url);
+  
     return this.http.get<User[]>(url);
+
   }
   getById(id: number):Observable<User>{
     const url = `${this.baseUrl}/users/update-details/ ${id}`;
