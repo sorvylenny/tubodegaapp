@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ChatDialogComponent } from 'src/app/shared/chat-dialog/chat-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +14,11 @@ export class HomeComponent implements OnInit {
   token: string | null= '';
   isUserLoggedIn: boolean = false;
   
- constructor(private router: Router) {}
+ constructor(private router: Router,  private dialog: MatDialog) {}
   ngOnInit(): void {
     this.userName = localStorage.getItem('userName');
     this.token = localStorage.getItem('token');
+    this.isUserLoggedIn = this.isTokenValid(); 
     
   }
 
@@ -45,16 +48,11 @@ export class HomeComponent implements OnInit {
     }
 
     private isTokenValid(): boolean {
-      // Implementa la lógica para verificar si el token es válido o no.
-      // Retorna true si el token es válido y false si no lo es.
-      // Puedes implementar esta lógica según tu necesidad.
-      // E.g., puedes verificar la expiración, firma, etc.
-      // Aquí, simplemente estamos verificando si el token existe y no está vacío.
       return this.token !== null && this.token !== '';
     }
     goToMyAccount(option: string): void {
       if (this.token) {
-        const isTokenValid = this.isTokenValid();  // Asumiendo que tienes una función para verificar el token
+        const isTokenValid = this.isTokenValid(); 
   
         if (isTokenValid) {
           if (option === 'mi-cuenta') {
@@ -65,13 +63,24 @@ export class HomeComponent implements OnInit {
             this.logout();
           }
         } else {
-          this.router.navigate(['auth/login']);
-        }
-      } else {
-        this.router.navigate(['auth/login']);
+         this.goToAuth('login');
       }
     }
 
-  logout(){}
+  }
 
+  logout(): void {
+    const dialogRef = this.dialog.open(ChatDialogComponent, {
+      width: '250px',
+      data: { message: '¿Estás seguro de que deseas cerrar sesión?' }
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result === true) {
+        localStorage.clear(); // Corregido: llamada a función clear()
+        this.router.navigate(['store']);
+      }
+    });
+  }
 }
+
