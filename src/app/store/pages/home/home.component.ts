@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,10 +6,18 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   mostrarAppBody = true;
+  userName: string | null='';
+  token: string | null= '';
+  isUserLoggedIn: boolean = false;
   
  constructor(private router: Router) {}
+  ngOnInit(): void {
+    this.userName = localStorage.getItem('userName');
+    this.token = localStorage.getItem('token');
+    
+  }
 
   // Método para ingresar al carrito
   goToCart(){
@@ -35,7 +43,34 @@ export class HomeComponent {
     onShop() {
       this.mostrarAppBody = true;
     }
+
+    private isTokenValid(): boolean {
+      // Implementa la lógica para verificar si el token es válido o no.
+      // Retorna true si el token es válido y false si no lo es.
+      // Puedes implementar esta lógica según tu necesidad.
+      // E.g., puedes verificar la expiración, firma, etc.
+      // Aquí, simplemente estamos verificando si el token existe y no está vacío.
+      return this.token !== null && this.token !== '';
+    }
+    goToMyAccount(option: string): void {
+      if (this.token) {
+        const isTokenValid = this.isTokenValid();  // Asumiendo que tienes una función para verificar el token
   
+        if (isTokenValid) {
+          if (option === 'mi-cuenta') {
+            this.router.navigate(['mi-cuenta']);
+          } else if (option === 'mis-pedidos') {
+            this.router.navigate(['mis-pedidos']);
+          } else if (option === 'salir') {
+            this.logout();
+          }
+        } else {
+          this.router.navigate(['auth/login']);
+        }
+      } else {
+        this.router.navigate(['auth/login']);
+      }
+    }
 
   logout(){}
 

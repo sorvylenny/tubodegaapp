@@ -16,51 +16,36 @@ export class AuthService {
     return{...this._user}
   }
 
-
-
   constructor(private http: HttpClient,  private router: Router) { }
 
- getCurrentUser(): Observable<string[]> {
-  return this.getCurrentUserFromLocalStorage().pipe(
-    map(user => {
-      if (user && user.roles) {
-        return user.roles.map(role => role.toString());
-      } else {
-        return [];
+
+registerUser(userData: User) {
+  const url = `${this.baseUrl}/auth/register`; 
+  console.log('URL:', url);
+  console.log('User Data:', userData);
+
+  return this.http.post(url, userData).pipe(
+    tap((response: any) => {
+      console.log('Response:', response);
+
+    
+      if (response && response.ok) {
+        localStorage.setItem('token', response.token);
       }
+    }),
+    map((response: any) => response.ok),  
+    catchError((error: any) => {
+      console.error('Error:', error);
+      return of(false);  
     })
   );
- }
-
-private getCurrentUserFromLocalStorage(): Observable<User | null> {
-  const userString = localStorage.getItem('currentUser');
-  if (userString) {
-    const currentUser: User = JSON.parse(userString);
-    return of(currentUser);
-  } else {
-    return of(null);
-  }
 }
 
+ 
 
-  registerUser(UserData:User): Observable<boolean>{
-    const url = `${this.baseUrl}/auth/register`;
-    const body = UserData;
-    return this.http.post<User>(url, body)
-    .pipe(
-      tap(({ ok, token }) => {
-        if (ok) {
-          localStorage.setItem('token', token!);
-        }
-      }),
-      map(resp => resp.ok as boolean),
-      catchError(err => of(false))  // Cambiado a catchError para devolver un Observable<boolean>
-    );
-}
-
-login(user: User): Observable<boolean> {
+login(email: string, password: string) {
   const url = `${this.baseUrl}/auth/login`;
-  const body = user;
+  const body = { email, password };
 
  // Realizar la solicitud HTTP POST y manejar la respuesta
  return this.http.post<User>(url, body).pipe(
@@ -69,14 +54,16 @@ login(user: User): Observable<boolean> {
      // Verifica si la respuesta es exitosa (ok) y tiene roles
      if (resp ) {
        localStorage.setItem('token', resp.token!);
+       localStorage.setItem('userName', resp.userName); 
+       console.log('usuario almacenado en localstore:', resp);
 
         // Redirige según el rol
-        if (resp.roles = Roles.admin) {
+        if (resp.roles && resp.roles.includes('admin')) {
           this.router.navigate(['admin']);
-        } else if (resp.roles = Roles.user) {
-          this.router.navigate(['home']);
+        } else {
+          this.router.navigate(['store']);
         }
-
+    
         return true;  // Autenticación exitosa
       }
 
@@ -89,5 +76,8 @@ login(user: User): Observable<boolean> {
   );
 }
 
+logout(){
+  localStorage.clear();
+}
 
 }

@@ -1,6 +1,6 @@
 <h1 class="Titulo">{{ formTitle }}</h1>
 <div class="container">
-  <app-form-user [formUser]="formUser"  [fields]="userFormFields"  [showRolesSelector]="false" (enviarClicked)="enviar()" (regresarClicked)="regresar()"></app-form-user>
+  <app-form-user [formUser]="formUser"  [fields]="userFormFields"  [showRolesSelector]="false" (enviarClicked)="enviar()" [enviarButtonDisabled]="enviarButtonDisabled" (regresarClicked)="regresar()"></app-form-user>
 </div>
 <div class="footer-Register">
 <app-footer></app-footer>

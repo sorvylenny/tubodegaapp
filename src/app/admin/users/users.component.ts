@@ -23,10 +23,10 @@ export class UsersComponent implements OnInit {
   constructor(private router: Router, private userService: UsersService) {}
 
   ngOnInit(): void {
- /*    this.user = this.getAllUsers(); //  lista de usuarios
+    this.allUsers(); //  lista de usuarios
     this.setTableColumns(); // Configuración las columnas de la tabla
     this.filteredUser = this.user; // Inicializa, los usuarios filtrados serán todos los usuarios
-    this.dataSource = this.filteredUser; // Configuración el origen de datos para la tabla */
+    this.dataSource = this.filteredUser; // Configuración el origen de datos para la tabla
    
   }
    allUsers(): void {
@@ -43,9 +43,9 @@ export class UsersComponent implements OnInit {
   setTableColumns(){
     this.tableColumns = [
       {HeaderCellDef: 'Id', ColumnDef: 'id', dataKey: 'id' },
-      {HeaderCellDef: 'Name', ColumnDef: 'ame', dataKey: 'name' },
-      {HeaderCellDef: 'Correo', ColumnDef: 'correo', dataKey: 'correo' },
-      {HeaderCellDef: 'Rol', ColumnDef: 'rol', dataKey: 'rol' },
+      {HeaderCellDef: 'FullName', ColumnDef: 'FullName', dataKey: 'FullName' },
+      {HeaderCellDef: 'email', ColumnDef: 'correo', dataKey: 'email' },
+      {HeaderCellDef: 'roles', ColumnDef: 'rol', dataKey: 'roles' },
       
     ]
   }

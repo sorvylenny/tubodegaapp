@@ -10,7 +10,7 @@
       </button>
     </mat-toolbar>
 <!-- Lista del modulo admin -->
-    <mat-nav-list (click)="onMenuClick()">
+    <mat-nav-list>
       <a routerLink="./user" mat-list-item (click)="sidenav.toggle()">
         <mat-icon mat-list-icon>sort</mat-icon>
         <span> Listado de Usuario</span>
@@ -47,7 +47,7 @@
 
     <span class="spacer"></span>
 
-    <a routerLink="./home" class="Admin"> <span>Admin</span></a>
+    <a routerLink="./home" class="Admin"> <span>{{userName}}</span></a>
     <div class="boton">
       <button mat-icon-button d-flex (click)="logout()">
         <mat-icon>logout</mat-icon>

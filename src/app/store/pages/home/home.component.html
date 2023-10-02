@@ -49,11 +49,18 @@
         class="example-icon favorite-icon"
         [matMenuTriggerFor]="notificationsMenu">
         <mat-icon>perm_identity</mat-icon>
+        <span class="name">{{userName}}</span>
       </button>
       <mat-menu #notificationsMenu="matMenu">
-        <button mat-menu-item (click)="goToAuth('login')"> Ingresar </button>
-        <button mat-menu-item (click)=" goToAuth('register')">Registro</button>
+        <button mat-menu-item *ngIf="!isUserLoggedIn" (click)="goToAuth('login')">Ingresar</button>
+        <button mat-menu-item *ngIf="!isUserLoggedIn" (click)="goToAuth('register')">Registro</button>
+      
+        <button mat-menu-item *ngIf="isUserLoggedIn" (click)="goToMyAccount('mi-cuenta')">Mi cuenta</button>
+        <button mat-menu-item *ngIf="isUserLoggedIn" (click)="goToMyAccount('mis-pedidos')">Mis pedidos</button>
+        <button mat-menu-item *ngIf="isUserLoggedIn" (click)="goToMyAccount('salir')">Salir</button>
+        
       </mat-menu>
+      
       <span class="fill-remaining-space"></span>
       <button
         mat-icon-button

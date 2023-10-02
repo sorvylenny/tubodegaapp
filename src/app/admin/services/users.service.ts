@@ -13,14 +13,12 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<User[]> {
-    const url = `${this.baseUrl}/users/users`;
-    console.log(url);
-  
+    const url = `${this.baseUrl}/users/users`;  
     return this.http.get<User[]>(url);
 
   }
   getById(id: number):Observable<User>{
-    const url = `${this.baseUrl}/users/update-details/ ${id}`;
+    const url = `${this.baseUrl}/users/update-details/${id}`;
     return this.http.patch<User>(url, {});
   }
 

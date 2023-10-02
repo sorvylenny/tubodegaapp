@@ -15,6 +15,7 @@ export class FormUserComponent {
   @Output() regresarClicked = new EventEmitter<void>(); // Evento para el botón Regresar
   @Output() enviarClicked = new EventEmitter<void>(); // Evento para el botón Regresar
   @Input() showRolesSelector: boolean = true;
+  @Input() enviarButtonDisabled: boolean= true;
 
   
 

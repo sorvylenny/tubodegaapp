@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MatDialog } from '@angular/material/dialog';
@@ -8,17 +8,18 @@ import { ChatDialogComponent } from 'src/app/shared/chat-dialog/chat-dialog.comp
   templateUrl: './home-admin.component.html',
   styleUrls: ['./home-admin.component.css']
 })
-export class HomeAdminComponent {
-  
-  mostrarAppBody = true;
+export class HomeAdminComponent implements OnInit{
 
+  userName: string | null='';
+  token: string | null= '';
   constructor( private router: Router,
                private dialog: MatDialog){}
-
-    // Método para manejar el clic en el menu
-  onMenuClick() {
-    this.mostrarAppBody = false;
+  ngOnInit(): void {
+    this.userName = localStorage.getItem('userName');
+    this.token = localStorage.getItem('token');
   }
+
+ 
                    
 
   logout(){
@@ -28,6 +29,7 @@ export class HomeAdminComponent {
     });
     dialog.afterClosed().subscribe (result =>{
       if ( result == true){
+        localStorage.clear;
         this.router.navigate(['./auth/login']);
       }
     });
