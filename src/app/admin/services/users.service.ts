@@ -1,23 +1,34 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interface/user';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
   private baseUrl: string = environment.baseUrl;
+  get = this.http.get<User[]>;
 
   constructor(private http: HttpClient) { }
-
+  
+  //TODO convertir esta sección del codigo en un guard para ser aplicado en el resto de endpoints protegidos
   getAll(): Observable<User[]> {
-    const url = `${this.baseUrl}/users/users`;  
-    return this.http.get<User[]>(url);
-
+    const url = `${this.baseUrl}/users/users`;
+    const singedToken = localStorage.getItem('token');
+    if (singedToken) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${singedToken}`,
+      });
+      return this.http.get<User[]>(url, { headers });
+    } else {
+      return of([]);
+    }
   }
-  getById(id: number):Observable<User>{
+
+  getById(id: number): Observable<User> {
     const url = `${this.baseUrl}/users/update-details/${id}`;
     return this.http.patch<User>(url, {});
   }
@@ -25,7 +36,7 @@ export class UsersService {
   /* getSeach( query: string ): Observable<User[]> {
     return this.http.get<User[]>(`${ this.baseUrl }/users/${query}`);
   } */
- /*  new(newUser: User): void {
+  /*  new(newUser: User): void {
     this.users_List.push(newUser);
   }
 
