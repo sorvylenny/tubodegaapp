@@ -22,14 +22,12 @@ export class AuthService {
 registerUser(userData: User) {
   const url = `${this.baseUrl}/auth/register`; 
   console.log('URL:', url);
-  console.log('User Data:', userData);
+
 
   return this.http.post(url, userData).pipe(
     tap((response: any) => {
-      console.log('Response:', response);
-
     
-      if (response && response.ok) {
+      if (response) {
         localStorage.setItem('token', response.token);
       }
     }),
@@ -54,7 +52,7 @@ login(email: string, password: string) {
      // Verifica si la respuesta es exitosa (ok) y tiene roles
      if (resp ) {
        localStorage.setItem('token', resp.token!);
-       localStorage.setItem('userName', resp.userName); 
+       localStorage.setItem('fullName', resp.fullName); 
        console.log('usuario almacenado en localstore:', resp);
 
         // Redirige según el rol

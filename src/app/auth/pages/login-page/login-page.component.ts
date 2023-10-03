@@ -35,7 +35,7 @@ export class LoginPageComponent implements OnInit {
     this.authService.login(email,password).subscribe(
       (response) => {
         if (response) {
-     
+
         } 
       },
       (error) => {

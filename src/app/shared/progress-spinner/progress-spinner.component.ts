@@ -22,7 +22,7 @@ export class ProgressSpinnerComponent {
     setTimeout(() => {
       // Información cargada, oculta el spinner
       this.hideSpinner();
-    }, 850); // Cambia el tiempo según tus necesidades
+    }, 880); // Cambia el tiempo según tus necesidades
   }
 
   ngOnInit(): void {

@@ -1,1 +1,21 @@
-<p>details-user works!</p>
+
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{selectedUser?.fullName}}</mat-card-title>
+      <mat-card-subtitle>{{selectedUser?.userName}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <ul>
+        <li><h3> Rol: {{selectedUser?.roles}}</h3></li>
+        <li><h3> Dirección: {{selectedUser?.details.address}}</h3></li>
+        <li><h3> Teléfono:{{selectedUser?.details.phone}}</h3></li>
+        <li><h3> Email: {{selectedUser?.email}}</h3></li>
+  
+      </ul>
+    </mat-card-content>
+    <mat-card-actions class="button">
+      <button mat-flat-button color="primary" class="boton-card">Modificar</button>
+      <button mat-flat-button color="primary" class="boton-card">Eliminar</button>
+    </mat-card-actions>
+  </mat-card>
+  

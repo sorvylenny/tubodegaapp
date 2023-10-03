@@ -10,12 +10,12 @@ import { ChatDialogComponent } from 'src/app/shared/chat-dialog/chat-dialog.comp
 })
 export class HomeAdminComponent implements OnInit{
 
-  userName: string | null='';
+  fullName: string | null='';
   token: string | null= '';
   constructor( private router: Router,
                private dialog: MatDialog){}
   ngOnInit(): void {
-    this.userName = localStorage.getItem('userName');
+    this.fullName = localStorage.getItem('fullName');
     this.token = localStorage.getItem('token');
   }
 

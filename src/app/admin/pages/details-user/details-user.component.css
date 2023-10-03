@@ -1,0 +1,13 @@
+.example-card {
+    max-width: 450px;
+  }
+
+  .button{
+    display: flex;
+    justify-content:space-between;
+  }
+
+  .boton-card{
+    width: 50%;
+    margin: 10px;
+  }

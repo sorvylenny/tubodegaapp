@@ -28,4 +28,6 @@ export class FormUserComponent {
   enviar() {
     this.regresarClicked.emit();
   }
+
+  
 }

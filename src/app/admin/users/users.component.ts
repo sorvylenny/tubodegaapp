@@ -30,22 +30,19 @@ export class UsersComponent implements OnInit {
    
   }
    allUsers(): void {
-     this.userService.getAll().subscribe((result: User[])=>{
+     this.userService.userAll().subscribe((result: User[])=>{
       this.dataSource= result; 
       console.log(this.dataSource);
      });
   }
 
- /*  getUserById(id: number): User | undefined {
-    return this.userService.getById(id);
-  }  */
-
   setTableColumns(){
     this.tableColumns = [
-      {HeaderCellDef: 'Id', ColumnDef: 'id', dataKey: 'id' },
-      {HeaderCellDef: 'FullName', ColumnDef: 'FullName', dataKey: 'FullName' },
-      {HeaderCellDef: 'email', ColumnDef: 'correo', dataKey: 'email' },
-      {HeaderCellDef: 'roles', ColumnDef: 'rol', dataKey: 'roles' },
+      {HeaderCellDef: 'Nombre Completo', ColumnDef: 'FullName', dataKey: 'fullName' },
+      {HeaderCellDef: 'Usuario', ColumnDef: 'userName', dataKey: 'userName' },
+      {HeaderCellDef: 'Email', ColumnDef: 'correo', dataKey: 'email' },
+      {HeaderCellDef: 'Dirección', ColumnDef: 'address', dataKey: 'address' },
+      {HeaderCellDef: 'Roles', ColumnDef: 'rol', dataKey: 'roles' },
       
     ]
   }

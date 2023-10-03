@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth.service';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-register-page',
@@ -61,23 +63,36 @@ export class RegisterPageComponent implements OnInit {
    regresar(){
     this.router.navigate(['./store']);
    }
-
+   
    enviar() {
     this.enviarButtonDisabled = false;
   
     if (this.formUser.valid) {
       const userData = this.formUser.value;
-      // Llama al servicio para registrar al usuario
-      this.authService.registerUser(userData).subscribe(
-        (response) => {
-          // Todo: hacer el Manejo la respuesta del servidor, por ejemplo, redirecciona al usuario a una página de éxito.
-        },
-        (error) => {
-          //Todo: hacer Manejo los errores, por ejemplo, muestra un mensaje de error al usuario.
-        }
-      );
+  
+      this.authService.registerUser(userData)
+        .pipe(
+          catchError(error => {
+            console.error('Ocurrió un error:', error);
+            // También podrías mostrar un mensaje en el DOM si lo deseas
+            // this.mostrarMensajeEnDOM('Ocurrió un error: ' + error.message);
+            return throwError('Hubo un error en la solicitud. Por favor, inténtalo de nuevo más tarde.');
+          })
+        )
+        .subscribe(
+          (ok) => {
+            if (ok) {
+              this.router.navigateByUrl('./store');
+              console.log(ok)
+            } else {
+              console.error('Ocurrió un error al registrar al usuario');
+            }
+          }
+        );
     }
   }
+  
+  
 
   camposIguales(campo1: string, campo2: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {

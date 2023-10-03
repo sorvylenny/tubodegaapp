@@ -10,7 +10,7 @@
           <input matInput [type]="field.type" [formControlName]="field.name">
           <mat-error *ngIf="formUser.get(field.name)?.hasError('required')">El {{ field.label }} es requerido.</mat-error>
           <mat-error *ngIf="formUser.get(field.name)?.hasError('email')">Correo inválido.</mat-error>
-          <mat-error *ngIf="field.name === 'password2' && formUser.get('password')?.value !== formUser.get('password2')?.value">Las contraseñas deben ser iguales.</mat-error>
+          <mat-error *ngIf="field.name === 'confirmPassword' && formUser.get('password')?.value !== formUser.get('confirmPassword')?.value">Las contraseñas deben ser iguales.</mat-error>
         </mat-form-field>
       </div>
         <!-- Selector de roles -->
