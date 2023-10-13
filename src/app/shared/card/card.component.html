@@ -2,12 +2,14 @@
 <div class="card-container">
   <mat-card *ngFor="let imageUrl of getImageUrlsArray()">
     <mat-card-header>
-      <mat-card-title class="title">{{ title }}</mat-card-title>
+      <mat-card-title class="title">{{ title|slice: 0:30 }}</mat-card-title>
       <mat-card-subtitle class="price">{{ subtitle | currency }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="imageUrl" alt="{{ imageAlt }}" class="imagen">
+    <div class="card__img">
+      <img mat-card-image [src]="imageUrl" alt="{{ imageAlt }}" class="imagen">
+    </div>
     <mat-card-content class="descripcion">
-      {{ content }}
+      {{ content | slice: 0:160 }}
     </mat-card-content>
     <mat-card-actions>
       <div class="botton_Card">

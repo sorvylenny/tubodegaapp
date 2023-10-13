@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/store/interfaces/store.interface';
+import { Product, genderOptions, sizeOptions, tagOptions } from 'src/app/store/interfaces/store.interface';
+
 
 @Component({
   selector: 'app-new-product',
@@ -12,18 +13,40 @@ export class NewProductComponent {
   product: Product[] = [];
 
   formProduct: FormGroup = this.formBuilder.group({
-    name: ['', [Validators.required]],
+    title: ['', [Validators.required]],
     description: ['', [Validators.required]],
-    price: ['', [Validators.required]],
-    imageUrl: ['', Validators.required],
-    quantity: ['', [Validators.required]],
-    netAmount: ['', Validators.required],
+    price: [0, [Validators.required, Validators.min(0)]],
+    images: ['', Validators.required],
+    stock: [0, [Validators.required, Validators.min(0)]],
+    sizes: ['', Validators.required],
+    gender: ['', Validators.required],
+    tags: ['', Validators.required],
   }); 
+
+  genderOptions = genderOptions;
+  sizeOptions = sizeOptions;
+  tagOptions = tagOptions;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router){}
 
-   
+    errorNoValido( campo: string ){
+
+      return this.formProduct.controls[campo].errors && 
+             this.formProduct.controls[campo].touched;
+    }
+
+    priceValido(){
+    
+      return this.formProduct?.controls['price']?.touched &&
+             this.formProduct?.controls['price']?.value <=0;
+     }
+
+     stockValido(){
+    
+      return this.formProduct?.controls['stock']?.touched &&
+             this.formProduct?.controls['stock']?.value <=0;
+     }
 
 
   onSubmit() {

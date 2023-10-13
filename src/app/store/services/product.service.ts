@@ -30,12 +30,17 @@ export class ProductService {
     return this.http.get<Product[]>(url);
     
   }
-  getDelete(id: string): Observable<any>{
+  deleteProduct(id: string): Observable<any>{
     return this.http.delete<any>(`${ this.baseUrl }/products/${id}`)
   }
-  getEdit(product:Product): Observable<Product>{
-    return  this.http.patch<Product> (`${ this.baseUrl }/products`,product)
+  editProduct(product:Product): Observable<Product>{
+    return  this.http.patch<Product>(`${ this.baseUrl }/products`,product)
   }
+
+  newProduct(product:Product): Observable<Product>{
+    return this.http.post<Product>(`${ this.baseUrl }/products/createItem`,product)
+  }
+
 
 
 }

@@ -41,3 +41,7 @@ export enum Tag {
 export interface Icon{
   icon: string;
 }
+
+export const genderOptions = Object.values(Gender).map(value => ({ label: value, value }));
+export const sizeOptions = Object.values(Size).map(value => ({ label: value, value }));
+export const tagOptions = Object.values(Tag).map(value => ({ label: value, value }));

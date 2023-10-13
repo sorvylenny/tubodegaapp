@@ -52,7 +52,7 @@ login(email: string, password: string) {
      // Verifica si la respuesta es exitosa (ok) y tiene roles
      if (resp ) {
        localStorage.setItem('token', resp.token!);
-       localStorage.setItem('fullName', resp.fullName); 
+       localStorage.setItem('fullName', resp.user.fullName); 
        console.log('usuario almacenado en localstore:', resp);
 
         // Redirige según el rol

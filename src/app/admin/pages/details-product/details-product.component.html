@@ -2,6 +2,7 @@
 <!--  <--Mostrar la tarjeta del producto seleccionado --> 
 <div *ngIf="selectedProduct">
     <!-- <app-card [products]="selectedProduct"></app-card> -->
+  <div class="custom-grid-container">
     <app-card
   [title]="selectedProduct.title.toString()"
   [subtitle]="selectedProduct.price.toString()"
@@ -15,6 +16,7 @@
   [buttonText2]="'Eliminar'"
   (buttonAction)="onDeleteButtonClick()"
   ></app-card>
+  </div>
 
   </div>
 

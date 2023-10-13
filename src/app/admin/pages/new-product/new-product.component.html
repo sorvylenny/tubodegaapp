@@ -1,36 +1,65 @@
-<form [formGroup]="formProduct" (ngSubmit)="onSubmit()" class="">
-    <mat-form-field>
+<form [formGroup]="formProduct" (ngSubmit)="onSubmit()" class>
+  <mat-form-field>
     <mat-label>Nombre del Producto</mat-label>
-      <input matInput  formControlName="name" name="name" required>
-    </mat-form-field>
-  
-    <mat-form-field>
-        <mat-label>Descripción del Producto</mat-label>
-      <input matInput  formControlName="description" name="description" required>
-    </mat-form-field>
-  
-    <mat-form-field>
-        <mat-label>Precio</mat-label>
-      <input matInput type="number" placeholder="Precio" formControlName="price" name="price" required>
-    </mat-form-field>
-  
-    <mat-form-field class="Imagen">
-        <mat-label>Imagen</mat-label>
-      <input matInput formControlName="imageUrl" name="imageUrl" required>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" class="button">Añadir Imagen</button>
-  
-    <mat-form-field>
-        <mat-label>Cantidad</mat-label>
-      <input matInput type="number" formControlName="quantity" name="quantity" required>
-    </mat-form-field>
-  
-    <mat-form-field>
-        <mat-label>Precio Neto</mat-label>
-      <input matInput type="number" placeholder="Monto neto" formControlName="netAmount" name="netAmount" required>
-    </mat-form-field>
-    <div class="Button-Add">
-        <button mat-raised-button color="primary" type="submit" >Añadir producto</button>
-    </div>
-  </form>
-  
+    <input matInput formControlName="title" name="title" required>
+    <mat-error *ngIf="errorNoValido('title')">El 'Nombre del Producto' es requerido minimo 3 letras en adelante.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Descripción del Producto</mat-label>
+    <input matInput formControlName="description" name="description" required>
+    <mat-error *ngIf="errorNoValido('description')">La 'Descripción del Producto' es requerido minimo 3 letras en adelante.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input matInput type="number" placeholder="Precio" formControlName="price"
+      name="price" required min="0">
+      <mat-error *ngIf="priceValido()">El 'Precio del Producto' es requerido minimo 0 maximo 10000000.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="Imagen">
+    <mat-label>Imagen</mat-label>
+    <input matInput formControlName="images" name="images" required>
+    <mat-error *ngIf="errorNoValido('images')">La 'Imagen del Producto' es requerido.</mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" class="button">Añadir
+    Imagen</button>
+
+  <mat-form-field>
+    <mat-label>Cantidad</mat-label>
+    <input matInput type="number" placeholder="Stock" formControlName="stock"
+      name="stock" required min="0">
+      <mat-error *ngIf="stockValido()">El 'stock del Producto' es requerido minimo 0 maximo 10000000.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Sizes</mat-label>
+   <mat-select formControlName="sizes" required>
+    <mat-option *ngFor="let option of sizeOptions" [value]="option.value">
+      {{ option.label }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="errorNoValido('sizes')">La 'talla del Producto' es requerido.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <mat-select formControlName="gender" required>
+      <mat-option *ngFor="let option of genderOptions" [value]="option.value">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="errorNoValido('gender')">El 'Genero del Producto' es requerido.</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tags</mat-label>
+    <mat-select formControlName="tags" required>
+      <mat-option *ngFor="let option of tagOptions" [value]="option.value">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="errorNoValido('tags')">El 'Tag del Producto' es requerido.</mat-error>
+  </mat-form-field>
+  <div class="Button-Add">
+    <button mat-raised-button color="primary" type="submit">Añadir producto</button>
+  </div>
+</form>

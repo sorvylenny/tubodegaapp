@@ -56,7 +56,7 @@ export class DetailsProductComponent implements OnInit {
       dialog.afterClosed().subscribe(
          (result)=> {
            if(this.selectedProduct) {
-             this.productService.getEdit(this.selectedProduct)
+             this.productService.editProduct(this.selectedProduct)
                 .subscribe( product => {
                   this.router.navigate(['/newProduct']);
                 });
@@ -81,7 +81,7 @@ export class DetailsProductComponent implements OnInit {
       dialog.afterClosed().subscribe(
          (result)=> {
            if(result) {
-             this.productService.getDelete(this.id!)
+             this.productService.deleteProduct(this.id!)
                 .subscribe( product => {
                   this.router.navigate(['/product']);
                 });

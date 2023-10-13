@@ -41,7 +41,7 @@ export class UsersComponent implements OnInit {
       {HeaderCellDef: 'Nombre Completo', ColumnDef: 'FullName', dataKey: 'fullName' },
       {HeaderCellDef: 'Usuario', ColumnDef: 'userName', dataKey: 'userName' },
       {HeaderCellDef: 'Email', ColumnDef: 'correo', dataKey: 'email' },
-      {HeaderCellDef: 'Dirección', ColumnDef: 'address', dataKey: 'address' },
+      {HeaderCellDef: 'Id', ColumnDef: 'id', dataKey: 'id' },
       {HeaderCellDef: 'Roles', ColumnDef: 'rol', dataKey: 'roles' },
       
     ]
