@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    baseUrl:'https://devshop-dev.fl0.io/api'
+    baseUrl:'https://tu-bodega.4.us-1.fl0.io/'
   };
   
   /*
