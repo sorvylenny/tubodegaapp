@@ -6,7 +6,7 @@
     <app-card
   [title]="selectedProduct.title.toString()"
   [subtitle]="selectedProduct.price.toString()"
-  [imageUrl]="selectedProduct.images.toString()"
+  [imageUrl]="selectedProduct.images!.toString()"
   imageAlt="Imagen del producto"
   [content]="selectedProduct.description"
   [icon1]="'edit'"

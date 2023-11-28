@@ -42,7 +42,7 @@ export class DetailsProductComponent implements OnInit {
   }
 
   Edit(){
-    if (!this.id) {
+  /*   if (!this.id) {
       console.error('El id es nulo o indefinido.');
       return;
     }
@@ -63,7 +63,7 @@ export class DetailsProductComponent implements OnInit {
             }
          }
       
-       )
+       ) */
 
   }
   onDeleteButtonClick(){

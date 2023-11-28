@@ -14,7 +14,7 @@
     *ngFor="let product of productList"
     [title]="product.title.toString()"
     [subtitle]="product.price.toString()"
-    [imageUrl]="product.images.toString()"
+    [imageUrl]="product.images!.toString()"
     imageAlt="Imagen del producto"
     [content]="product.description"
     [icon1]="'shopping_cart_checkout'"

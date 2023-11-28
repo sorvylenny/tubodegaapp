@@ -1,9 +1,12 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsersService } from '../services/users.service';
-import { TableColumns } from 'src/app/shared/interface/table-columns';
 import { User } from '../interface/user';
-
+import Swal from 'sweetalert2';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from 'src/app/auth/auth.service';
+import { ModelUserComponent } from '../Models/model-user/model-user.component';
 
 
 @Component({
@@ -12,46 +15,81 @@ import { User } from '../interface/user';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = []; // Declaración vacía inicialmente
-  dataSource: User[] = []; // Usaremos este para la tabla
-  filterValue: string = '';
-  tableColumns: TableColumns[] = [];
-  user: User[] = [];
-  filteredUser: User[] = []; // Inicialmente estará vacío
+  ColumnsTable: string[] = ['nombre', 'email','rol', 'estado', 'acciones'];
+  dataSource: User[] = [];
+  dataListUser = new MatTableDataSource(this.dataSource);
+  @ViewChild(MatPaginator) paginatorTable!: MatPaginator;
 
 
-  constructor(private router: Router, private userService: UsersService) {}
+  constructor(private dialog: MatDialog,
+    private userService: UsersService,
+    private authService: AuthService,
+  ) {}
 
   ngOnInit(): void {
-    this.allUsers(); //  lista de usuarios
-    this.setTableColumns(); // Configuración las columnas de la tabla
-    this.filteredUser = this.user; // Inicializa, los usuarios filtrados serán todos los usuarios
-    this.dataSource = this.filteredUser; // Configuración el origen de datos para la tabla
-   
-  }
-   allUsers(): void {
-     this.userService.userAll().subscribe((result: User[])=>{
-      this.dataSource= result; 
-      console.log(this.dataSource);
-     });
+    this.allUsers();
   }
 
-  setTableColumns(){
-    this.tableColumns = [
-      {HeaderCellDef: 'Nombre Completo', ColumnDef: 'FullName', dataKey: 'fullName' },
-      {HeaderCellDef: 'Usuario', ColumnDef: 'userName', dataKey: 'userName' },
-      {HeaderCellDef: 'Email', ColumnDef: 'correo', dataKey: 'email' },
-      {HeaderCellDef: 'Id', ColumnDef: 'id', dataKey: 'id' },
-      {HeaderCellDef: 'Roles', ColumnDef: 'rol', dataKey: 'roles' },
-      
-    ]
+  ngAfterViewInit(): void {
+    this.dataListUser.paginator = this.paginatorTable;
   }
 
-  handleFilterChanged(filterValue: string) {}
+  allUsers(): void {
+    this.userService.userAll().subscribe((result: User[]) => {
+      this.dataListUser.data = result;
+      console.log(this.dataListUser);
+    });
+  }
 
-  detailsId(event:any): void {
-    // Aquí puedes usar el ID para navegar a la página de detalles
-    this.router.navigate(['admin/detailsUser', event]);
+  appSearchTable(event: Event){
+    const searchValue = (event.target as HTMLInputElement).value;
+    this.dataListUser.filter = searchValue.trim().toLocaleLowerCase();
+    console.log(this.dataListUser);
+  }
+  newUser(){
+    this.dialog.open(ModelUserComponent, {
+      disableClose:true
+    }).afterClosed().subscribe((res: string) =>{
+      if(res ==="true") this.allUsers();
+    });
+  }
+  editUser(user:User){
+    this.dialog.open(ModelUserComponent, {
+      disableClose:true,
+      data: user
+    }).afterClosed().subscribe((res: string) =>{
+      if(res ==="true") this.allUsers();
+    });
+  }
+
+  deleteUser(user: User) {
+    Swal.fire({
+      title: '¿Estás seguro de eliminar el usuario?',
+      text: user.fullName,
+      icon: 'warning',
+      confirmButtonColor: '#1ABC9C',
+      confirmButtonText: "Sí, eliminar",
+      showCancelButton: true,
+      cancelButtonText: "No, Regresar",
+      cancelButtonColor: '#C0392B'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService.deleteUser(user.id!).subscribe( 
+          (response) => {
+            if (response) {
+              Swal.fire('Éxito', 'Usuario eliminado correctamente', 'success');
+             
+            } else {
+              
+              Swal.fire('Error', 'No se pudo eliminar el usuario', 'error');
+            }
+          },
+          (error) => {
+            Swal.fire('Error', 'Ha ocurrido un error al eliminar el usuario', 'error');
+          }
+        );
+      }
+    });
   }
   
 }

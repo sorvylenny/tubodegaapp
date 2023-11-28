@@ -30,9 +30,10 @@ export class ProductosComponent implements OnInit {
   }
 
   addProducts(page: number): void {
-    this.productService.getProducts( this.pageSize , page)
+    this.productService.getProducts( page, this.pageSize)
         .subscribe(products => { 
             this.productList = products;
+            console.log(products)
             this.handleFilterChanged(this.filterValue.value);
       });
   }

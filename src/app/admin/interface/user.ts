@@ -1,5 +1,5 @@
 export interface User {
-    ok?:          boolean;
+    id?:          string;
     email?:       string;
     password?:    string;
     fullName?:    string;
@@ -10,6 +10,7 @@ export interface User {
     country?:     string;
     token?:       string;
     roles?:       Roles[];
+    isActive?:    boolean;
 }
 
 export enum Roles {

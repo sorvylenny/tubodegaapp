@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../interfaces/store.interface';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
+import { RegisterResponse } from 'src/app/auth/interface/registerResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,13 @@ import { Observable } from 'rxjs';
 export class ProductService {
 
   private baseUrl: string = environment.baseUrl;
+  private authToken!: string;
+
+  setAuthToken(token: string) {
+    this.authToken = token;
+  }
 
   constructor( private http: HttpClient ) { }
-
-  /* getProducts(): Observable <Product[]> {
-    return this.http.get<Product[]>(`${this.baseUrl}/products`);
-  } */
 
   getProductById( id: string): Observable <Product>{
     return this.http.get<Product>(`${this.baseUrl}/products/${id}`);
@@ -26,23 +28,53 @@ export class ProductService {
   }
 
   getProducts(page: number, pageSize: number): Observable<Product[]> {
-    const url = `${this.baseUrl}/products?limit=${page}&offset=${pageSize}`;
-    return this.http.get<Product[]>(url);
-    
+    const url = `${this.baseUrl}/products?limit=${pageSize}&offset=${page}`;
+    console.log(url)
+    return this.http.get<Product[]>(url);  
   }
+
   deleteProduct(id: string): Observable<any>{
-    return this.http.delete<any>(`${ this.baseUrl }/products/${id}`)
+    const url = `${this.baseUrl}/products/${id}`;
+    const signedToken = localStorage.getItem('token');
+
+    if (signedToken) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${signedToken}`,
+      });
+  
+    return this.http.delete<any>(url, {headers});
+  }else{
+    return throwError("No se encontró un token de autenticación en el almacenamiento local.");
   }
-  editProduct(product:Product): Observable<Product>{
-    return  this.http.patch<Product>(`${ this.baseUrl }/products`,product)
-  }
-
-  newProduct(product:Product): Observable<Product>{
-    return this.http.post<Product>(`${ this.baseUrl }/products/createItem`,product)
-  }
-
-
-
 }
+  editProduct(id:string): Observable<Product>{
+    const url = `${this.baseUrl}/products/${id}`;
+    const signedToken = localStorage.getItem('token');
+    if (signedToken) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${signedToken}`,
+      });
+    return  this.http.patch<Product>(url, {headers});
+  }else{
+    return throwError("No se encontró un token de autenticación en el almacenamiento local.");
+  }
+}
+
+  newProduct(product: Product): Observable<RegisterResponse> {
+    const url = `${this.baseUrl}/products/createItem`;
+    const signedToken = localStorage.getItem('token');
+  
+    if (signedToken) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${signedToken}`,
+      });
+      return this.http.post<RegisterResponse>(url, product, { headers });
+    } else {
+      
+      return throwError("No se encontró un token de autenticación en el almacenamiento local.");
+    }
+    }
+  }
+  
 
 

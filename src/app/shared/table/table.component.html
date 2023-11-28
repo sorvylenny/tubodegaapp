@@ -21,9 +21,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClick(row.id)"></tr>
 
   </table>
-  <div>
-    <mat-paginator 
-      aria-label="Select page of users"
-      [length]="dataSource.length" [pageSize]="10" [pageIndex]="0"></mat-paginator>
-  </div>
+ 
 

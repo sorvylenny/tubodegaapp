@@ -1,0 +1,71 @@
+<h1 mat-dialog-title>{{ titleAction }} Producto</h1>
+
+<mat-dialog-content>
+    <form [formGroup]="formProduct">
+        <mat-grid-list cols="1" rowHeight="100px">
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre del producto</mat-label>
+                    <input matInput formControlName="title" autocomplete="off" />
+                    <mat-icon matSuffix>fit_screen</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Precio</mat-label>
+                    <input matInput formControlName="price"
+                        autocomplete="off"/>
+                    <mat-icon matSuffix>attach_money</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput formControlName="description"
+                        autocomplete="off"/>
+                    <mat-icon matSuffix>description</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Stock</mat-label>
+                    <input matInput formControlName="stock" autocomplete="off"
+                        type="number" min="1"/>
+                    <mat-icon matSuffix>inventory</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                  <mat-label>Género</mat-label>
+                  <mat-select formControlName="gender">
+                    <mat-option *ngFor="let option of genderOptions" [value]="option.value">
+                      {{ option.label }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </mat-grid-tile>
+
+              <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Imagen</mat-label>
+                    <input matInput formControlName="images" (change)="onImageSelected($event)" accept="image/*">
+                    <mat-icon matSuffix>image</mat-icon>
+                  </mat-form-field>
+                  
+               <!--  <button mat-raised-button color="primary" >agregar</button> -->
+            </mat-grid-tile>
+           
+        </mat-grid-list>
+        </form>
+        </mat-dialog-content>
+
+        <mat-dialog-actions align="end">
+            <button mat-raised-button mat-dialog-close color="warn">Volver</button>
+            <button mat-raised-button [disabled]="formProduct.invalid"
+                (click)="saveEdit_Product()">{{buttonAction}}</button>                
+</mat-dialog-actions>
+

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interface/user';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -40,20 +40,34 @@ export class UsersService {
       }
   }
 
-  /* getSeach( query: string ): Observable<User[]> {
-    return this.http.get<User[]>(`${ this.baseUrl }/users/${query}`);
-  } */
-  /*  new(newUser: User): void {
-    this.users_List.push(newUser);
-  }
-
-  update(updatedUser: User): void {
-    const index = this.users_List.findIndex(user => user.id === updatedUser.id);
-    if (index !== -1) {
-      this.users_List[index] = updatedUser;
+  EditUser(id: string): Observable<User> {
+    const url = `${this.baseUrl}/users/user/${id}`;
+    const signedToken = localStorage.getItem('token');
+  
+    if (signedToken) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${signedToken}`,
+      });
+  
+      return this.http.patch<User>(url, { headers });
+    } else {
+      // Manejar el caso en el que no se encuentra un token
+      return throwError("No se encontró un token de autenticación en el almacenamiento local.");
     }
   }
-  delete(id: number): void {
-    this.users_List = this.users_List.filter(user => user.id !== id);
-  } */
+  
+
+  deleteUser(id: string): Observable<User[]> {
+    const url = `${this.baseUrl}/delete-detail/${id}`;
+    const singedToken = localStorage.getItem('token');
+    if (singedToken) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${singedToken}`,
+      });
+      return this.http.delete<User[]>(url, { headers });
+    } else {
+      // Manejar el caso en el que no se encuentra un token
+      return throwError("No se encontró un token de autenticación en el almacenamiento local.");
+    }
+  }
 }

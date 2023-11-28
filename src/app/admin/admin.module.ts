@@ -15,6 +15,8 @@ import { SharedModule } from '../shared/shared.module';
 import { NewProductComponent } from './pages/new-product/new-product.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { UsersModule } from './users/users.module';
+import { ModelUserComponent } from './Models/model-user/model-user.component';
+import { ModelProductComponent } from './Models/model-product/model-product.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { UsersModule } from './users/users.module';
     DetailsProductComponent,
     NewProductComponent,
     HomePageComponent,
+    ModelUserComponent,
+    ModelProductComponent,
  ],
   imports: [
     CommonModule,
