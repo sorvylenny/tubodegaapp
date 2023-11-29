@@ -1,12 +1,12 @@
 <h1 mat-dialog-title>{{ titleAction }}</h1>
 
 <mat-dialog-content>
-  <form [formGroup]="formUser">
+  <form [formGroup]="isEditMode ? formUserEdit : formUser">
     <mat-grid-list cols="1" rowHeight="100px">
       <mat-grid-tile>
         <mat-form-field appearance="outline">
           <mat-label>Nombre Completo</mat-label>
-          <input matInput formControlName="fullName" autocomplete="off" />
+          <input matInput formControlName="fullName" autocomplete="off"  [disabled]="isEditMode" />
           <mat-icon matSuffix>account_circle</mat-icon>
         </mat-form-field>
       </mat-grid-tile>
@@ -27,7 +27,7 @@
       <mat-grid-tile>
         <mat-form-field appearance="outline">
           <mat-label>Rol</mat-label>
-          <mat-select formControlName="roles">
+          <mat-select formControlName="roles"  [disabled]="isEditMode">
             <mat-option *ngFor="let item of ListRoles" [value]="item">
               {{ item }}
             </mat-option>
@@ -84,7 +84,7 @@
       <mat-grid-tile>
         <mat-form-field appearance="outline">
           <mat-label>Estado</mat-label>
-          <mat-select formControlName="isActive">
+          <mat-select formControlName="isActive"  [disabled]="isEditMode">
             <mat-option value="true">Activo</mat-option>
             <mat-option value="false">Inactivo</mat-option>
           </mat-select>
@@ -97,7 +97,7 @@
 
 <mat-dialog-actions align="end">
     <button mat-raised-button mat-dialog-close color="warn">Volver</button>
-    <button mat-raised-button [disabled]="formUser.invalid" (click)="saveEditUser()">{{buttonAction}}</button>
+    <button mat-raised-button [disabled]="isEditMode ? formUserEdit.invalid : formUser.invalid" (click)="saveEditUser()">{{buttonAction}}</button>
 
 </mat-dialog-actions>
 

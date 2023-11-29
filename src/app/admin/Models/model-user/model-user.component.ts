@@ -15,9 +15,11 @@ import { RegisterResponse } from 'src/app/auth/interface/registerResponse';
 })
 export class ModelUserComponent {
   formUser: FormGroup;
+  formUserEdit: FormGroup;
   hidePassword: boolean = true;
   titleAction: string = "Agregar";
   buttonAction: string = "Guardar";
+  isEditMode: boolean = false;
   ListRoles: Roles[] = [Roles.admin, Roles.superUser, Roles.user];
   constructor(
     private modalsActual: MatDialogRef<ModelUserComponent>,
@@ -32,99 +34,117 @@ export class ModelUserComponent {
       email: ['', Validators.required],
       roles: [''],
       password: [''],
-      address: [''],    
-      city:    [''],       
-      phone:   [''],      
-      country: [''],    
+      address: [''],
+      city:    [''],
+      phone:   [''],
+      country: [''],
       isActive: [''],
       });
     if (this.dateUser!=null){
       this.titleAction="Editar";
       this.buttonAction='Modificar';
     }
+    this.formUserEdit= this.fb.group({
+      fullName:[''],
+      roles:[''],
+      isActive:['']
+    });
+    if (this.isEditMode) {
+      this.formUserEdit.get('roles')?.disable();
+    }
+  }
+  enableEditMode() {
+    this.isEditMode = true;
+    this.formUserEdit.get('roles')?.disable();
   }
   ngOnInit(): void {
     if (this.dateUser != null) {
       this.formUser.patchValue({
         fullName: this.dateUser.fullName,
-        UserName: this.dateUser.userName,
-        email:this.dateUser.email,
+        userName: this.dateUser.userName,
+        email: this.dateUser.email,
         roles: [this.dateUser.roles],
-        password:this.dateUser.password,
+        password: this.dateUser.password,
         address: this.dateUser.address,
         city: this.dateUser.city,
         phone: this.dateUser.phone,
         country: this.dateUser.country,
-        });
+      });
+    } else {
+      // Proporcionamos un tipo explícito para user
+      const user: User = this.dateUser ?? { fullName: null, roles: null, isActive: null };
+
+      this.formUserEdit.patchValue({
+        fullName: user.fullName,
+        roles: [user.roles],
+        isActive: user.isActive,
+      });
     }
   }
   saveEditUser() {
-    const user: User = {
-      id: this.dateUser == null ? '' : this.dateUser.id,
-      fullName: this.formUser.value.fullName,
-      userName: this.formUser.value.userName,
+    const newUser: User = {
       email: this.formUser.value.email,
       password: this.formUser.value.password,
+      fullName: this.formUser.value.fullName,
+      userName: this.formUser.value.userName,
       address: this.formUser.value.address,
       city: this.formUser.value.city,
       phone: this.formUser.value.phone,
       country: this.formUser.value.country,
-      }
+    };
 
-      if (this.dateUser == null) {
-        this.authService.registerUser(user).subscribe({
-          next: (res: RegisterResponse) => {
-            if (res && res.success) {
-              Swal.fire({
-                icon: 'success',
-                title: '¡Registro exitoso!',
-                text: 'Usuario registrado exitosamente.'
-              });
-              this.modalsActual.close("true");
-            } else {
-              Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Hubo un problema durante el registro.'
-              });
-            }
-          },
-          error: (error) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text: 'Hubo un problema durante la solicitud de registro.'
-            });
-          }
-        });
-      } else {
-        this.userService.EditUser(user.id!).subscribe(
-          (res: User) => {  
-            if (res) {
-              Swal.fire({
-                icon: 'success',
-                title: '¡Actualización exitosa!',
-                text: 'Usuario actualizado exitosamente.'
-              });
-              this.modalsActual.close("true");
-            } else {
-              Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Hubo un problema durante la actualización.'
-              });
-            }
-          },
-          (error) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text: 'Hubo un problema durante la solicitud de actualización.'
-            });
-          }
-        ); 
+    const userId: User = {
+      id: this.dateUser == null ? '' : this.dateUser.id,
+    };
 
+    const user: User = {
+     roles: this.formUser.value.roles,
+     isActive: this.formUser.value.isActive,
+    };
+
+    if (this.dateUser == null) {
+      try {
+        this.authService.registerUser(newUser).subscribe(
+          () => {
+            this.formUser.reset();
+            this.modalsActual.close("true");
+            this.isEditMode= false;
+            Swal.fire({
+              icon: "success",
+              title: "Usuario registrado exitosamente",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      } catch (error) {
+        console.log(error);
       }
-           
-    } 
+    } else {
+      try {
+        console.log(user)
+        this.userService.EditUser(userId.id!, user).subscribe(
+          () => {
+            this.isEditMode= true;
+            this.modalsActual.close("true");
+            Swal.fire({
+              icon: "success",
+              title: "Usuario actualizado exitosamente",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
 }

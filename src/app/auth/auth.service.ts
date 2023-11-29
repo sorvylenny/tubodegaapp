@@ -19,13 +19,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  registerUser(userData: User): Observable<RegisterResponse> {
-    const url = `${this.baseUrl}register`; 
-    return this.http.post<RegisterResponse>(url, userData);
+  registerUser(userData: User): Observable<User> {
+    const url = `${this.baseUrl}register`;
+    console.log(url);
+    return this.http.post<User>(url, userData);
   }
-  
 
- 
+
+
 
 login(required: Login) {
   const url = `${this.baseUrl}login`;

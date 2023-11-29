@@ -62,34 +62,4 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  deleteUser(user: User) {
-    Swal.fire({
-      title: '¿Estás seguro de eliminar el usuario?',
-      text: user.fullName,
-      icon: 'warning',
-      confirmButtonColor: '#1ABC9C',
-      confirmButtonText: "Sí, eliminar",
-      showCancelButton: true,
-      cancelButtonText: "No, Regresar",
-      cancelButtonColor: '#C0392B'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.userService.deleteUser(user.id!).subscribe( 
-          (response) => {
-            if (response) {
-              Swal.fire('Éxito', 'Usuario eliminado correctamente', 'success');
-             
-            } else {
-              
-              Swal.fire('Error', 'No se pudo eliminar el usuario', 'error');
-            }
-          },
-          (error) => {
-            Swal.fire('Error', 'Ha ocurrido un error al eliminar el usuario', 'error');
-          }
-        );
-      }
-    });
-  }
-  
 }

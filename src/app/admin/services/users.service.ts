@@ -12,7 +12,7 @@ export class UsersService {
   private baseUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
-  
+
   //TODO convertir esta sección del codigo en un guard para ser aplicado en el resto de endpoints protegidos
   userAll(): Observable<User[]> {
     const url = `${this.baseUrl}/users/users`;
@@ -40,22 +40,22 @@ export class UsersService {
       }
   }
 
-  EditUser(id: string): Observable<User> {
+  EditUser(id: string, required: User): Observable<User> {
     const url = `${this.baseUrl}/users/user/${id}`;
     const signedToken = localStorage.getItem('token');
-  
+
     if (signedToken) {
       const headers = new HttpHeaders({
         Authorization: `Bearer ${signedToken}`,
       });
-  
-      return this.http.patch<User>(url, { headers });
+
+      return this.http.patch<User>(url, required, { headers });
     } else {
       // Manejar el caso en el que no se encuentra un token
       return throwError("No se encontró un token de autenticación en el almacenamiento local.");
     }
   }
-  
+
 
   deleteUser(id: string): Observable<User[]> {
     const url = `${this.baseUrl}/delete-detail/${id}`;

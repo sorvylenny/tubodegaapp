@@ -4,9 +4,9 @@
 
 export const environment = {
     production: false,
-    baseUrl:'https://tu-bodega.4.us-1.fl0.io/'
+    baseUrl:'https://tu-bodega.4.us-1.fl0.io/api'
   };
-  
+
   /*
    * For easier debugging in development mode, you can import the following file
    * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

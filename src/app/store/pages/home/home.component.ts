@@ -10,16 +10,16 @@ import { ChatDialogComponent } from 'src/app/shared/chat-dialog/chat-dialog.comp
 })
 export class HomeComponent implements OnInit {
   mostrarAppBody = true;
-  userName: string | null='';
+  userName: string | null = '';
   token: string | null= '';
   isUserLoggedIn: boolean = false;
-  
+
  constructor(private router: Router,  private dialog: MatDialog) {}
   ngOnInit(): void {
     this.userName = localStorage.getItem('userName');
     this.token = localStorage.getItem('token');
-    this.isUserLoggedIn = this.isTokenValid(); 
-    
+    this.isUserLoggedIn = this.isTokenValid();
+
   }
 
   // Método para ingresar al carrito
@@ -52,8 +52,8 @@ export class HomeComponent implements OnInit {
     }
     goToMyAccount(option: string): void {
       if (this.token) {
-        const isTokenValid = this.isTokenValid(); 
-  
+        const isTokenValid = this.isTokenValid();
+
         if (isTokenValid) {
           if (option === 'mi-cuenta') {
             this.router.navigate(['mi-cuenta']);
